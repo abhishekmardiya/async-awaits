@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
+    "incremental": false, // when false ==> tsconfig.tsbuildinfo will not be created
     "plugins": [
       {
         "name": "next"

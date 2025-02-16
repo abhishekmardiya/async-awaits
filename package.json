@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "ts": "tsc --noEmit --watch",
+    "lint": "next lint",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "eslint-config-prettier": "^10.0.1",

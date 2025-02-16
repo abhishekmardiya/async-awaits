@@ -1,4 +1,22 @@
 {
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "dev",
+          "commands": ["npm run dev"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "ts",
+          "commands": ["npm run ts"]
+        }
+      ]
+    }
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
