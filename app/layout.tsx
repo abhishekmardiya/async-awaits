@@ -38,6 +38,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
       >
+        {/* https://ui.shadcn.com/docs/dark-mode/next */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
