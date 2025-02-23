@@ -43,7 +43,13 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["turbopack"],
+  "cSpell.words": [
+    "darkgradient",
+    "darknone",
+    "mdxeditor",
+    "rgba",
+    "turbopack"
+  ],
   "files.exclude": {
     // "**/.next": true,
     // "**/node_modules": true,
