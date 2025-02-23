@@ -45,16 +45,23 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
     "Abhishek",
+    "bkdi",
     "darkgradient",
     "darknone",
+    "epem",
+    "GOCSPX",
+    "googleusercontent",
     "grotesk",
     "lito",
     "Mardiya",
+    "Mbjwnq",
     "mdxeditor",
+    "mrtp",
     "rgba",
     "sonner",
     "turbopack"
   ],
+  // hiding from working directory
   "files.exclude": {
     // "**/.next": true,
     // "**/node_modules": true,
