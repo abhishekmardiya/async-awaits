@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
+import { Toaster } from "sonner";
 
+import { auth } from "@/auth";
 import ThemeProvider from "@/context/Theme";
+
 import "./globals.css";
 
 const inter = localFont({
@@ -26,27 +30,40 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MainLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+const MainLayout = async ({ children }: { children: ReactNode }) => {
+  /*
+  session: {
+    user: {
+      name: 'Abhishek Mardiya',
+      email: 'mardiyaabhishek@gmail.com',
+      image: 'https://avatars.githubusercontent.com/u/97448460?v=4'
+    },
+    expires: '2025-03-25T09:39:15.277Z'
+  }
+  */
+  const session = await auth();
+
   return (
     // suppressHydrationWarning only suppress hydration warning for one level deep only which is next-theme related warnings.It does not suppress all hydration warnings.
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
-      >
-        {/* https://ui.shadcn.com/docs/dark-mode/next */}
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+      <SessionProvider session={session}>
+        <body
+          className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
         >
-          {children}
-        </ThemeProvider>
-      </body>
+          {/* https://ui.shadcn.com/docs/dark-mode/next */}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Toaster />
+        </body>
+      </SessionProvider>
     </html>
   );
-}
+};
+
+export default MainLayout;
