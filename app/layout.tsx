@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
 
-import "./globals.css";
-import Navbar from "@/components/navigation/navbar";
 import ThemeProvider from "@/context/Theme";
+import "./globals.css";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: Readonly<{
   children: ReactNode;
@@ -45,7 +44,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           {children}
         </ThemeProvider>
       </body>
