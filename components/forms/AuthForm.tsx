@@ -52,6 +52,7 @@ const AuthForm = <T extends FieldValues>({
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
         className="mt-10 space-y-6"
+        noValidate
       >
         {Object.keys(defaultValues)?.map((field) => (
           <FormField
