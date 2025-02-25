@@ -36,9 +36,7 @@ const config = [
             "index",
             "object",
           ],
-
           "newlines-between": "always",
-
           pathGroups: [
             {
               pattern: "@app/**",
@@ -46,23 +44,20 @@ const config = [
               position: "after",
             },
           ],
-
           pathGroupsExcludedImportTypes: ["builtin"],
-
           alphabetize: {
             order: "asc",
             caseInsensitive: true,
           },
         },
       ],
-      "comma-dangle": "off",
     },
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
-
     rules: {
       "no-undef": "off",
+      "comma-dangle": "off",
     },
   },
 ];
