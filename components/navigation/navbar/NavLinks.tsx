@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
   const pathname = usePathname();
   // FIXME:dummy id
-  const userId = 1;
+  const userId = "1";
 
   return (
     <>
@@ -22,9 +22,10 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
           (pathname?.includes(el?.route) && el?.route?.length > 1) ||
           pathname === el?.route;
 
-        if (el?.route === ROUTES?.PROFILE) {
+        // FIXME:hardcoded route
+        if (el?.route === "profile") {
           if (userId) {
-            el.route = `${el?.route}/${userId}`;
+            el.route = ROUTES?.PROFILE(userId);
           } else {
             return null;
           }

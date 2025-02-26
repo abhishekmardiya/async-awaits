@@ -46,6 +46,13 @@ const MainLayout = async ({ children }: { children: ReactNode }) => {
   return (
     // suppressHydrationWarning only suppress hydration warning for one level deep only which is next-theme related warnings.It does not suppress all hydration warnings.
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <SessionProvider session={session}>
         <body
           className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
