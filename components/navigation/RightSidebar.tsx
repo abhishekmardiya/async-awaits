@@ -5,6 +5,7 @@ import TagCard from "../cards/TagCard";
 
 import ROUTES from "@/constants/routes";
 
+// TODO:dummy data
 const hotQuestions = [
   { _id: "1", title: "How to create a custom hook in React?" },
   { _id: "2", title: "How to use React Query?" },
