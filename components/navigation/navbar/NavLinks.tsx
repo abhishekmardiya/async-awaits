@@ -10,7 +10,7 @@ import { sidebarLinks } from "@/constants";
 import ROUTES from "@/constants/routes";
 import { cn } from "@/lib/utils";
 
-const NavLinks = ({ isMobileNav = false }: { isMobileNav: boolean }) => {
+const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
   const pathname = usePathname();
   // FIXME:dummy id
   const userId = 1;
