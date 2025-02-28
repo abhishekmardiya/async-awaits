@@ -1,9 +1,54 @@
 import Link from "next/link";
 
+import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
 
-const Home = async () => {
+// FIXME:dummy data
+const questions = [
+  {
+    _id: "1",
+    title: "How to learn React?",
+    description: "I want to learn React, can anyone help me?",
+    tags: [
+      { _id: "1", name: "React" },
+      { _id: "2", name: "JavaScript" },
+    ],
+    author: { _id: "1", name: "John Doe" },
+    upvotes: 10,
+    answers: 5,
+    views: 100,
+    createdAt: new Date(),
+  },
+  {
+    _id: "2",
+    title: "How to learn JavaScript?",
+    description: "I want to learn JavaScript, can anyone help me?",
+    tags: [
+      { _id: "1", name: "React" },
+      { _id: "2", name: "JavaScript" },
+    ],
+    author: { _id: "1", name: "John Doe" },
+    upvotes: 10,
+    answers: 5,
+    views: 100,
+    createdAt: new Date(),
+  },
+];
+
+interface SearchParams {
+  searchParams: Promise<{ [key: string]: string }>;
+}
+
+const Home = async ({ searchParams }: SearchParams) => {
+  const { query = "" } = await searchParams;
+
+  const filteredQuestions = query
+    ? questions?.filter((question) =>
+        question?.title?.toLowerCase()?.includes(query?.toLowerCase())
+      )
+    : questions;
+
   return (
     <>
       <section className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -15,14 +60,20 @@ const Home = async () => {
           <Link href={ROUTES?.ASK_QUESTION}>Ask a Question</Link>
         </Button>
       </section>
-      {/* TODO:LocalSearch & HomeFilter */}
-      <section className="mt-11">LocalSearch</section>
+      <section className="mt-11">
+        <LocalSearch
+          imgSrc="/icons/search.svg"
+          placeholder="Search.questions.."
+          route="/"
+          otherClasses="flex-1"
+        />
+      </section>
+      {/* TODO:HomeFilter */}
       HomeFilter
       <div className="mt-10 flex w-full flex-col gap-6">
-        <p>Question Card 1</p>
-        <p>Question Card 1</p>
-        <p>Question Card 1</p>
-        <p>Question Card 1</p>
+        {filteredQuestions?.map((question) => (
+          <h1 key={question?._id}>{question?.title}</h1>
+        ))}
       </div>
     </>
   );
