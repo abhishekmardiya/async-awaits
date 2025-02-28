@@ -69,7 +69,7 @@ const Home = async ({ searchParams }: SearchParams) => {
         />
       </section>
       {/* TODO:HomeFilter */}
-      HomeFilter
+      {/* HomeFilter */}
       <div className="mt-10 flex w-full flex-col gap-6">
         {filteredQuestions?.map((question) => (
           <h1 key={question?._id}>{question?.title}</h1>
