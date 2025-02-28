@@ -39,7 +39,7 @@ const MobileNavigation = () => {
             height={23}
           />
           <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900">
-            Dev <span className="text-primary-500">overflow</span>{" "}
+            Dev<span className="text-primary-500">Overflow</span>{" "}
           </p>
         </Link>
         <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-y-auto">
