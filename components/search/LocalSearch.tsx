@@ -25,24 +25,23 @@ const LocalSearch = ({ imgSrc, placeholder, route, otherClasses }: Props) => {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
+      let newUrl = "";
+
       if (searchQuery) {
-        const newUrl = formUrlQuery({
+        newUrl = formUrlQuery({
           params: searchParams?.toString(),
           key: "query",
           value: searchQuery,
         });
-
-        push(newUrl, { scroll: false });
       } else {
         if (pathname === route) {
-          const newUrl = removeKeysFromUrlQuery({
+          newUrl = removeKeysFromUrlQuery({
             params: searchParams?.toString(),
             keysToRemove: ["query"],
           });
-
-          push(newUrl, { scroll: false });
         }
       }
+      push(newUrl, { scroll: false });
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);
