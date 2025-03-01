@@ -53,7 +53,7 @@ export const SignUpSchema = z.object({
 export const AskQuestionSchema = z.object({
   title: z
     .string()
-    .min(5, { message: "Title is required." })
+    .min(5, { message: "Title is minimum of 5 characters." })
     .max(100, { message: "Title cannot exceed 100 characters." }),
 
   content: z.string().min(1, { message: "Body is required." }),

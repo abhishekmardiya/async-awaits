@@ -52,7 +52,9 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
       key={resolvedTheme}
       markdown={value}
       ref={editorRef}
-      className="background-light800_dark200 light-border-2 markdown-editor dark-editor w-full border"
+      // grid to prevent the editor from overflowing
+      // with "grid" toolbar is scrollable
+      className="background-light800_dark200 light-border-2 markdown-editor dark-editor grid w-full border"
       onChange={fieldChange}
       plugins={[
         headingsPlugin(),
