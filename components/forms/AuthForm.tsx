@@ -50,14 +50,14 @@ const AuthForm = <T extends FieldValues>({
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(handleSubmit)}
+        onSubmit={form?.handleSubmit(handleSubmit)}
         className="mt-10 space-y-6"
         noValidate
       >
         {Object.keys(defaultValues)?.map((field) => (
           <FormField
             key={field}
-            control={form.control}
+            control={form?.control}
             name={field as Path<T>}
             render={({ field }) => (
               <FormItem className="flex w-full flex-col gap-2.5">
