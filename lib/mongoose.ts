@@ -1,3 +1,6 @@
+/* This code ensures an efficient MongoDB connection in a Next.js app by caching the connection globally to prevent multiple connections.
+ */
+
 import mongoose, { Mongoose } from "mongoose";
 
 const MONGODB_URI = (process.env.MONGODB_URI || "") as string;
