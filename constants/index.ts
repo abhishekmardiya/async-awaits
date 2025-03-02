@@ -35,3 +35,5 @@ export const sidebarLinks = [
     label: "Ask a question",
   },
 ];
+
+export const themePreferenceList = ["light", "dark", "system"];
