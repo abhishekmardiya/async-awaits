@@ -12,6 +12,9 @@ interface MongooseCache {
 }
 
 declare global {
+  /* `global.mongoose` is a global variable used to share the connection between different parts of the application. It is used to prevent multiple connections to the same database.
+   */
+
   // eslint-disable-next-line no-var
   var mongoose: MongooseCache;
 }
