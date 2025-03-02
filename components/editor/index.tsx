@@ -27,6 +27,7 @@ import {
   codeBlockPlugin,
   codeMirrorPlugin,
   diffSourcePlugin,
+  DiffSourceToggleWrapper,
 } from "@mdxeditor/editor";
 import { basicDark } from "cm6-theme-basic-dark";
 import { useTheme } from "next-themes";
@@ -44,7 +45,7 @@ interface Props {
 const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
   const { resolvedTheme } = useTheme();
 
-  // for properly support our dark and light mode
+  // for properly support application's dark and light theme
   const theme = resolvedTheme === "dark" ? [basicDark] : [];
 
   return (
@@ -52,8 +53,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
       key={resolvedTheme}
       markdown={value}
       ref={editorRef}
-      // grid to prevent the editor from overflowing
-      // with "grid" toolbar is scrollable
+      // grid to prevent the editor from overflowing and makes toolbar scrollable
       className="background-light800_dark200 light-border-2 markdown-editor dark-editor grid w-full border"
       onChange={fieldChange}
       plugins={[
@@ -115,6 +115,10 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
                       <InsertThematicBreak />
 
                       <InsertCodeBlock />
+
+                      <DiffSourceToggleWrapper>
+                        <UndoRedo />
+                      </DiffSourceToggleWrapper>
                     </>
                   ),
                 },
