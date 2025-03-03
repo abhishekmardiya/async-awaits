@@ -1,19 +1,25 @@
 import { model, models, Schema, Types } from "mongoose";
 
-export interface ICollection {
-  author: Types.ObjectId;
-  question: Types.ObjectId;
+export interface IInteraction {
+  user: Types.ObjectId;
+  action: string;
+  actionId: Types.ObjectId;
+  actionType: "question" | "answer";
 }
 
-const CollectionSchema = new Schema<ICollection>(
+// for recommendation algorithm
+const InteractionSchema = new Schema<IInteraction>(
   {
-    author: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    question: { type: Schema.Types.ObjectId, ref: "Question", required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    action: { type: String, required: true },
+    // actionId:questionId or answerId
+    actionId: { type: Schema.Types.ObjectId, required: true },
+    actionType: { type: String, enum: ["question", "answer"], required: true },
   },
   { timestamps: true }
 );
 
-const Collection =
-  models?.Collection || model<ICollection>("Collection", CollectionSchema);
+const Interaction =
+  models?.Interaction || model<IInteraction>("Interaction", InteractionSchema);
 
-export default Collection;
+export default Interaction;
