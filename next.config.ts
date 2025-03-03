@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // to avoid errors when using pino with nextjs
+  serverExternalPackages: ["pino", "pino-pretty"],
 };
 
 export default nextConfig;
