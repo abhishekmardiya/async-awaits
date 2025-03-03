@@ -22,12 +22,9 @@ const UserSchema = new Schema(
     portfolio: { type: String },
     reputation: { type: Number, default: 0 },
   },
-  // Create createdAt and updatedAt fields in the collection automatically
   { timestamps: true }
 );
 
-// models gives all the models in the database
-// If the model is already registered, use that, otherwise create a new model
 const User = models?.user || model<IUser>("User", UserSchema);
 
 export default User;
