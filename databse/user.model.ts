@@ -1,0 +1,32 @@
+import { Schema, models, model } from "mongoose";
+
+export interface IUser {
+  name: string;
+  username: string;
+  email: string;
+  bio?: string;
+  image: string;
+  location?: string;
+  portfolio?: string;
+  reputation?: number;
+}
+
+const UserSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    bio: { type: String },
+    image: { type: String, required: true },
+    location: { type: String },
+    portfolio: { type: String },
+    reputation: { type: Number, default: 0 },
+  },
+  { timestamps: true }
+);
+
+// models gives all the models in the database
+// If the model is already registered, use that, otherwise create a new model
+const User = models?.user || model<IUser>("User", UserSchema);
+
+export default User;
