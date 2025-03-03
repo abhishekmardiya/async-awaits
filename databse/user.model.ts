@@ -22,6 +22,7 @@ const UserSchema = new Schema(
     portfolio: { type: String },
     reputation: { type: Number, default: 0 },
   },
+  // Create createdAt and updatedAt fields in the collection automatically
   { timestamps: true }
 );
 
