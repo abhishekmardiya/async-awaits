@@ -1,5 +1,6 @@
 import pino from "pino";
 
+// pino-pretty does not work on production so we disable it and use it only in development
 const isEdge = process.env.NEXT_RUNTIME === "edge";
 const isProduction = process.env.NODE_ENV === "production";
 
