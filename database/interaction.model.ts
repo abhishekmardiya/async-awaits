@@ -5,7 +5,6 @@ export interface ICollection {
   question: Types.ObjectId;
 }
 
-// bookmark question for user
 const CollectionSchema = new Schema<ICollection>(
   {
     author: { type: Schema.Types.ObjectId, ref: "User", required: true },
