@@ -34,12 +34,12 @@ const MobileNavigation = () => {
         <Link href={ROUTES?.HOME} className="flex items-center gap-1">
           <Image
             src="/images/site-logo.svg"
-            alt="DevOverflow Logo"
+            alt="Async Awaits Logo"
             width={23}
             height={23}
           />
           <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900">
-            Dev<span className="text-primary-500">Overflow</span>{" "}
+            Async<span className="text-primary-500">Awaits</span>{" "}
           </p>
         </Link>
         <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-y-auto">
