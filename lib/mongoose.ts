@@ -40,7 +40,7 @@ const dbConnect = async (): Promise<Mongoose> => {
     cached.promise = (async () => {
       try {
         const result = await mongoose.connect(MONGODB_URI, {
-          dbName: "DevOverflow_DB",
+          dbName: "asyncawaits",
         });
 
         logger.info("Connected to MongoDB");
