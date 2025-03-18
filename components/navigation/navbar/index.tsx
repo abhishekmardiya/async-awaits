@@ -20,8 +20,7 @@ const Navbar = () => {
           Async<span className="text-primary-500">Awaits</span>{" "}
         </p>
       </Link>
-      {/* TODO: */}
-      <p>Global Search</p>
+      {/* TODO: Global Search */}
       <div className="flex-between gap-5">
         <Theme />
         <MobileNavigation />
