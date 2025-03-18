@@ -1,3 +1,5 @@
+// !DO NOT IMPORT EXTERNAL TYPES INTO THIS FILE
+
 interface Tag {
   _id: string;
   name: string;
