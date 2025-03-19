@@ -13,13 +13,19 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  if (!id) throw new NotFoundError("Account");
+
+  if (!id) {
+    throw new NotFoundError("Account");
+  }
 
   try {
     await dbConnect();
 
     const account = await Account.findById(id);
-    if (!account) throw new NotFoundError("Account");
+
+    if (!account) {
+      throw new NotFoundError("Account");
+    }
 
     return NextResponse.json({ success: true, data: account }, { status: 200 });
   } catch (error) {
@@ -33,13 +39,19 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  if (!id) throw new NotFoundError("Account");
+
+  if (!id) {
+    throw new NotFoundError("Account");
+  }
 
   try {
     await dbConnect();
 
     const account = await User.findByIdAndDelete(id);
-    if (!account) throw new NotFoundError("Account");
+
+    if (!account) {
+      throw new NotFoundError("Account");
+    }
 
     return NextResponse.json({ success: true, data: account }, { status: 200 });
   } catch (error) {
@@ -53,7 +65,10 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  if (!id) throw new NotFoundError("Account");
+
+  if (!id) {
+    throw new NotFoundError("Account");
+  }
 
   try {
     await dbConnect();
@@ -62,14 +77,17 @@ export async function PUT(
     // No safe parsing is performed here as the request body might contain data that shouldn't be exposed.
     const validatedData = AccountSchema.partial().safeParse(body);
 
-    if (!validatedData.success)
+    if (!validatedData.success) {
       throw new ValidationError(validatedData.error.flatten().fieldErrors);
+    }
 
     const updatedAccount = await Account.findByIdAndUpdate(id, validatedData, {
       new: true,
     });
 
-    if (!updatedAccount) throw new NotFoundError("Account");
+    if (!updatedAccount) {
+      throw new NotFoundError("Account");
+    }
 
     return NextResponse.json(
       { success: true, data: updatedAccount },

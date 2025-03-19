@@ -12,6 +12,7 @@ export async function GET() {
     await dbConnect();
 
     const accounts = await Account.find();
+
     return NextResponse.json(
       { success: true, data: accounts },
       { status: 200 }
@@ -25,6 +26,7 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     await dbConnect();
+
     const body = await req.json();
 
     // Password is optional for OAuth, hence no safe parsing is used
@@ -36,10 +38,11 @@ export async function POST(req: Request) {
       providerAccountId: validatedData?.providerAccountId,
     });
 
-    if (existingAccount)
+    if (existingAccount) {
       throw new ForbiddenError(
         "An account with the same provider already exists"
       );
+    }
 
     const newAccount = await Account.create(validatedData);
 
