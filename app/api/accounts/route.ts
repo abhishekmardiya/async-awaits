@@ -27,12 +27,13 @@ export async function POST(req: Request) {
     await dbConnect();
     const body = await req.json();
 
-    // no safe parsing as password is optional in case of OAuth
+    // Password is optional for OAuth, hence no safe parsing is used
+    // Using the parse method directly returns the validated data instead of validatedData.data
     const validatedData = AccountSchema.parse(body);
 
     const existingAccount = await Account.findOne({
-      provider: validatedData.provider,
-      providerAccountId: validatedData.providerAccountId,
+      provider: validatedData?.provider,
+      providerAccountId: validatedData?.providerAccountId,
     });
 
     if (existingAccount)

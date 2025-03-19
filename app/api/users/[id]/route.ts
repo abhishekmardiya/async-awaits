@@ -50,7 +50,7 @@ export async function PUT(
     const validatedData = UserSchema.safeParse(body);
 
     if (!validatedData?.success) {
-      throw new ValidationError(validatedData.error.flatten().fieldErrors);
+      throw new ValidationError(validatedData?.error.flatten().fieldErrors);
     }
 
     const updatedUser = await User.findByIdAndUpdate(

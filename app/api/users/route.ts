@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     const validatedData = UserSchema.safeParse(body);
 
     if (!validatedData?.success) {
-      throw new ValidationError(validatedData.error.flatten().fieldErrors);
+      throw new ValidationError(validatedData?.error.flatten().fieldErrors);
     }
 
     // Check if email or username already exists
