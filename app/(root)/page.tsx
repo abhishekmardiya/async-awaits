@@ -5,7 +5,6 @@ import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
-import { api } from "@/lib/api";
 
 // FIXME:dummy data
 const questions = [
@@ -55,9 +54,6 @@ interface SearchParams {
 
 const Home = async ({ searchParams }: SearchParams) => {
   const { query = "", filter = "" } = await searchParams;
-
-  const data = await api?.users?.getAll();
-  console.log("data:", data);
 
   const filteredQuestions =
     query || filter
