@@ -118,7 +118,7 @@ export const api = {
       providerAccountId,
     }: SignInWithOAuthParams) =>
       fetchHandler({
-        url: `${API_BASE_URL}/auth/sign-in-with-oauth`,
+        url: `${API_BASE_URL}/auth/signin-with-oauth`,
         options: {
           method: "POST",
           body: JSON.stringify({ user, provider, providerAccountId }),
