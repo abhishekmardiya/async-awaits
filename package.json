@@ -8,7 +8,7 @@
     "url": "git+https://github.com/abhishekmardiya/async-awaits.git"
   },
   "author": "Abhishek Mardiya",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/abhishekmardiya/async-awaits/issues"
   },
