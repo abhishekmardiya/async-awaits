@@ -1,13 +1,24 @@
 {
   "name": "async-awaits",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Async Awaits is a Q&A platform for developers, similar to Stack Overflow, built with Next.js. It allows developers to ask technical questions, provide answers, and engage with the developer community. The platform also features AI-powered assistance to help generate relevant answers, suggest improvements, and enhance discussions.",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekmardiya/async-awaits.git"
+  },
+  "author": "Abhishek Mardiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhishekmardiya/async-awaits/issues"
+  },
+  "homepage": "https://asyncawaits.com",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3000 --experimental-https",
     "ts": "tsc --noEmit --watch",
     "lint": "next lint",
-    "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "debug-build": "next build --debug"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.1",
@@ -27,14 +38,14 @@
     "eslint-plugin-tailwindcss": "^3.18.0",
     "lucide-react": "^0.475.0",
     "mongoose": "^8.11.0",
-    "next": "^15.2.3",
+    "next": "^15.2.4",
     "next-auth": "^5.0.0-beta.25",
     "next-themes": "^0.4.4",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0",
     "query-string": "^9.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-hook-form": "^7.54.2",
     "slugify": "^1.6.6",
     "sonner": "^2.0.1",
