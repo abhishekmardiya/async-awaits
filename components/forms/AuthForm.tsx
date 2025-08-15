@@ -11,8 +11,6 @@ import {
 } from "react-hook-form";
 import { z, ZodType } from "zod";
 
-import { Input } from "../ui/input";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -23,6 +21,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import ROUTES from "@/constants/routes";
+
+import { Input } from "../ui/input";
 
 interface AuthFormProps<T extends FieldValues> {
   formType: "SIGN_IN" | "SIGN_UP";

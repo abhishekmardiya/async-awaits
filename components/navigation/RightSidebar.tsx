@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import TagCard from "../cards/TagCard";
-
 import ROUTES from "@/constants/routes";
+
+import TagCard from "../cards/TagCard";
 
 // TODO:dummy data
 const hotQuestions = [
