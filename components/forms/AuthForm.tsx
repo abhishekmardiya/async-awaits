@@ -92,7 +92,7 @@ const AuthForm = <T extends FieldValues>({
           <p>
             Don&apos;t have an account?{" "}
             <Link href={ROUTES?.SIGN_UP} className={linkClass}>
-              Sign In
+              Sign Up
             </Link>
           </p>
         ) : (
