@@ -1,11 +1,9 @@
-import Link from "next/link";
-import React from "react";
-
 import ROUTES from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
 
-import TagCard from "./TagCard";
 import Metric from "../Metric";
+import { NextLink } from "../NextLink";
+import TagCard from "./TagCard";
 
 interface Props {
   question: Question;
@@ -22,11 +20,11 @@ const QuestionCard = ({
             {getTimeStamp(createdAt)}
           </span>
 
-          <Link href={ROUTES?.QUESTION(_id)}>
+          <NextLink href={ROUTES?.QUESTION(_id)}>
             <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
               {title}
             </h3>
-          </Link>
+          </NextLink>
         </div>
       </div>
 

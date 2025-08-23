@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import ROUTES from "@/constants/routes";
 
 import TagCard from "../cards/TagCard";
+import { NextLink } from "../NextLink";
 
 // TODO:dummy data
 const hotQuestions = [
@@ -29,7 +29,7 @@ const RightSidebar = () => {
         <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
         <div className="mt-7 flex w-full flex-col gap-[30px]">
           {hotQuestions?.map(({ _id, title }) => (
-            <Link
+            <NextLink
               key={_id}
               href={ROUTES?.PROFILE(_id)}
               className="flex cursor-pointer items-center justify-between gap-7"
@@ -42,7 +42,7 @@ const RightSidebar = () => {
                 height={20}
                 className="invert-colors"
               />
-            </Link>
+            </NextLink>
           ))}
         </div>
       </div>

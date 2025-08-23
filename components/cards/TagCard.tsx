@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 import ROUTES from "@/constants/routes";
 import { getDevIconClassName } from "@/lib/utils";
 
+import { NextLink } from "../NextLink";
 import { Badge } from "../ui/badge";
 
 interface Props {
@@ -67,9 +67,9 @@ const TagCard = ({
         {Content}
       </button>
     ) : (
-      <Link href={ROUTES.TAGS(_id)} className="flex justify-between gap-2">
+      <NextLink href={ROUTES.TAGS(_id)} className="flex justify-between gap-2">
         {Content}
-      </Link>
+      </NextLink>
     );
   }
 };

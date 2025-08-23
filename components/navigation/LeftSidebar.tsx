@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import ROUTES from "@/constants/routes";
 
+import { NextLink } from "../NextLink";
 import { Button } from "../ui/button";
 import NavLinks from "./navbar/NavLinks";
 
@@ -18,7 +18,7 @@ const LeftSidebar = () => {
           className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none"
           asChild
         >
-          <Link href={ROUTES.SIGN_IN}>
+          <NextLink href={ROUTES.SIGN_IN}>
             <Image
               src="/icons/account.svg"
               alt="Account"
@@ -27,14 +27,14 @@ const LeftSidebar = () => {
               className="invert-colors lg:hidden"
             />
             <span className="primary-text-gradient max-lg:hidden">Log In</span>
-          </Link>
+          </NextLink>
         </Button>
 
         <Button
           className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none"
           asChild
         >
-          <Link href={ROUTES.SIGN_UP}>
+          <NextLink href={ROUTES.SIGN_UP}>
             <Image
               src="/icons/sign-up.svg"
               alt="Account"
@@ -43,7 +43,7 @@ const LeftSidebar = () => {
               className="invert-colors lg:hidden"
             />
             <span className="max-lg:hidden">Sign Up</span>
-          </Link>
+          </NextLink>
         </Button>
       </div>
     </section>

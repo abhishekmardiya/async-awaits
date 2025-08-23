@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+
+import { NextLink } from "./NextLink";
 
 interface Props {
   imgUrl: string;
@@ -46,9 +46,9 @@ const Metric = ({
   );
 
   return href ? (
-    <Link href={href} className="flex-center gap-1">
+    <NextLink href={href} className="flex-center gap-1">
       {metricContent}
-    </Link>
+    </NextLink>
   ) : (
     <div className="flex-center gap-1">{metricContent}</div>
   );

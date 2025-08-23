@@ -21,7 +21,8 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.addMissingImports": "explicit"
+    "source.addMissingImports": "explicit",
+    "source.removeUnusedImports": "explicit"
   },
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
@@ -89,6 +90,6 @@
   "files.exclude": {
     // "**/.next": true,
     // "**/node_modules": true,
-    "next-env.d.ts": true
+    // "next-env.d.ts": true
   }
 }

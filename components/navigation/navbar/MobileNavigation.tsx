@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { NextLink } from "@/components/NextLink";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -31,7 +31,7 @@ const MobileNavigation = () => {
       >
         {/* SheetTitle is for accessibility */}
         <SheetTitle className="hidden">Navigation</SheetTitle>
-        <Link href={ROUTES?.HOME} className="flex items-center gap-1">
+        <NextLink href={ROUTES?.HOME} className="flex items-center gap-1">
           <Image
             src="/images/site-logo.svg"
             alt="Async Awaits Logo"
@@ -41,7 +41,7 @@ const MobileNavigation = () => {
           <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900">
             Async<span className="text-primary-500">Awaits</span>{" "}
           </p>
-        </Link>
+        </NextLink>
         <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-y-auto">
           {/*  Clicking on the sheet content will automatically close the sheet. */}
           <SheetClose asChild>
@@ -51,18 +51,18 @@ const MobileNavigation = () => {
           </SheetClose>
           <div className="flex flex-col gap-3">
             <SheetClose asChild>
-              <Link href={ROUTES?.SIGN_IN}>
+              <NextLink href={ROUTES?.SIGN_IN}>
                 <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg p-4 shadow-none">
                   <span className="primary-text-gradient">Log In</span>
                 </Button>
-              </Link>
+              </NextLink>
             </SheetClose>
             <SheetClose asChild>
-              <Link href={ROUTES?.SIGN_IN}>
+              <NextLink href={ROUTES?.SIGN_IN}>
                 <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
                   Sign In
                 </Button>
-              </Link>
+              </NextLink>
             </SheetClose>
           </div>
         </div>

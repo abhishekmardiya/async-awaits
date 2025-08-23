@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
+import { NextLink } from "@/components/NextLink";
 import { SheetClose } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
 import ROUTES from "@/constants/routes";
@@ -32,7 +32,7 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
         }
 
         const linkComponent = (
-          <Link
+          <NextLink
             href={el?.route}
             key={el?.label}
             className={cn(
@@ -57,7 +57,7 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
             >
               {el?.label}
             </p>
-          </Link>
+          </NextLink>
         );
 
         return isMobileNav ? (
