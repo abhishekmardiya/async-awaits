@@ -71,7 +71,7 @@ export const api = {
       providerAccountId: string;
     }) =>
       fetchHandler({
-        url: `${API_BASE_URL}/accounts/provider/${providerAccountId}`,
+        url: `${API_BASE_URL}/accounts/provider`,
         options: {
           method: "POST",
           body: JSON.stringify({ providerAccountId }),

@@ -3,10 +3,10 @@
 import { Session } from "next-auth";
 import { ZodError, ZodSchema } from "zod";
 
+import { auth } from "@/auth";
+
 import { UnauthorizedError, ValidationError } from "../http-errors";
 import dbConnect from "../mongoose";
-
-import { auth } from "@/auth";
 
 type ActionOptions<T> = {
   params?: T;
@@ -19,11 +19,11 @@ type ActionOptions<T> = {
 // 3. Connecting to the database.
 // 4. Returning the params and session.
 
-async function action<T>({
+export const action = async <T>({
   params,
   schema,
   authorize = false,
-}: ActionOptions<T>) {
+}: ActionOptions<T>) => {
   if (schema && params) {
     try {
       schema.parse(params);
@@ -51,6 +51,4 @@ async function action<T>({
   await dbConnect();
 
   return { params, session };
-}
-
-export default action;
+};
