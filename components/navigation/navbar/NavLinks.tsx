@@ -7,13 +7,16 @@ import { Fragment } from "react";
 import { NextLink } from "@/components/NextLink";
 import { SheetClose } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
-import ROUTES from "@/constants/routes";
 import { cn } from "@/lib/utils";
 
-const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
+const NavLinks = ({
+  isMobileNav = false,
+  userId,
+}: {
+  isMobileNav?: boolean;
+  userId?: string;
+}) => {
   const pathname = usePathname();
-  // FIXME:dummy id
-  const userId = "1";
 
   return (
     <>
@@ -22,10 +25,9 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
           (pathname?.includes(el?.route) && el?.route?.length > 1) ||
           pathname === el?.route;
 
-        // FIXME:hardcoded route
-        if (el?.route === "profile") {
+        if (el.route === "/profile") {
           if (userId) {
-            el.route = ROUTES?.PROFILE(userId);
+            el.route = `${el.route}/${userId}`;
           } else {
             return null;
           }
