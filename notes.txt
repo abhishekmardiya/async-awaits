@@ -1,2 +1,3 @@
 - Remove all component's default export and convert to named export
 - Create useToaster hook 
+- Create <NextImage></NextImage> 

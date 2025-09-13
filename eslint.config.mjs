@@ -58,6 +58,7 @@ const config = [
     rules: {
       "no-undef": "off",
       "comma-dangle": "off",
+      "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
     },
   },
 ];

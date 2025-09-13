@@ -40,6 +40,7 @@ export const action = async <T>({
 
   let session: Session | null = null;
 
+  // some actions like creating a question require authentication
   if (authorize) {
     session = await auth();
 
