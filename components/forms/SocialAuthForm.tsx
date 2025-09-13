@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 
@@ -9,6 +10,10 @@ import ROUTES from "@/constants/routes";
 import { Button } from "../ui/button";
 
 const SocialAuthForm = () => {
+  const pathName = usePathname();
+
+  const btnTitlePrefix = pathName === ROUTES.SIGN_IN ? "Sign in" : "Sign up";
+
   const buttonClass =
     "background-dark400_light900 body-medium text-dark200_light800 min-h-12 flex-1 rounded-2 px-4 py-3.5";
 
@@ -37,7 +42,7 @@ const SocialAuthForm = () => {
           height={20}
           className="invert-colors mr-2.5 object-contain"
         />
-        <span>Log in with GitHub</span>
+        <span>{btnTitlePrefix} with GitHub</span>
       </Button>
 
       <Button className={buttonClass} onClick={() => handleSignIn("google")}>
@@ -48,7 +53,7 @@ const SocialAuthForm = () => {
           height={20}
           className="mr-2.5 object-contain"
         />
-        <span>Log in with Google</span>
+        <span>{btnTitlePrefix} with Google</span>
       </Button>
     </div>
   );
