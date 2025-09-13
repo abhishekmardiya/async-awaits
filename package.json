@@ -14,7 +14,7 @@
   },
   "homepage": "https://asyncawaits.com",
   "scripts": {
-    "dev": "next dev --turbopack -p 3000",
+    "dev": "next dev --turbopack -p 3000 --experimental-https",
     "ts": "tsc --noEmit --watch",
     "lint": "next lint",
     "start": "next start",
