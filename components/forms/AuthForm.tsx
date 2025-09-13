@@ -49,9 +49,7 @@ const AuthForm = <T extends FieldValues>({
   });
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
-    console.log("data:", data);
     const result = (await onSubmit(data)) as ActionResponse;
-    console.log("result:", result);
 
     if (result?.success) {
       toast.success("Success", {
