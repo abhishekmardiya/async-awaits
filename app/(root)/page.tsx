@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import { QuestionCard } from "@/components/cards/QuestionCard";
 import { DataRenderer } from "@/components/DataRendered";
 import HomeFilter from "@/components/filters/HomeFilter";
@@ -31,9 +30,6 @@ const Home = async ({ searchParams }: SearchParams) => {
   });
 
   const { questions } = data! || {};
-
-  const session = await auth();
-  console.log("session:", session);
 
   return (
     <>
