@@ -2,17 +2,17 @@
 
 import mongoose from "mongoose";
 
-import { action } from "../handlers/action";
-import handleError from "../handlers/error";
-import { AskQuestionSchema } from "../validations";
-
 import Question from "@/database/question.model";
 import TagQuestion from "@/database/tag-question.model";
 import Tag from "@/database/tag.model";
 
+import { action } from "../handlers/action";
+import handleError from "../handlers/error";
+import { AskQuestionSchema } from "../validations";
+
 export const createQuestion = async (
   params: CreateQuestionParams
-): Promise<ActionResponse> => {
+): Promise<ActionResponse<Question>> => {
   const validationResult = await action({
     params,
     schema: AskQuestionSchema,
