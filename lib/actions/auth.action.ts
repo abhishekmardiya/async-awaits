@@ -12,9 +12,9 @@ import handleError from "../handlers/error";
 import { NotFoundError } from "../http-errors";
 import { SignInSchema, SignUpSchema } from "../validations";
 
-export async function signUpWithCredentials(
+export const signUpWithCredentials = async (
   params: AuthCredentials
-): Promise<ActionResponse> {
+): Promise<ActionResponse> => {
   const validationResult = await action({ params, schema: SignUpSchema });
 
   if (validationResult instanceof Error) {
@@ -71,11 +71,11 @@ export async function signUpWithCredentials(
   } finally {
     await session.endSession();
   }
-}
+};
 
-export async function signInWithCredentials(
+export const signInWithCredentials = async (
   params: Pick<AuthCredentials, "email" | "password">
-): Promise<ActionResponse> {
+): Promise<ActionResponse> => {
   const validationResult = await action({ params, schema: SignInSchema });
 
   if (validationResult instanceof Error) {
@@ -109,4 +109,4 @@ export async function signInWithCredentials(
   } catch (error) {
     return handleError(error) as ErrorResponse;
   }
-}
+};
