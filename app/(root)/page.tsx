@@ -1,10 +1,12 @@
 import { auth } from "@/auth";
-import QuestionCard from "@/components/cards/QuestionCard";
+import { QuestionCard } from "@/components/cards/QuestionCard";
+import { DataRenderer } from "@/components/DataRendered";
 import HomeFilter from "@/components/filters/HomeFilter";
 import { NextLink } from "@/components/NextLink";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/routes";
+import { EMPTY_QUESTION } from "@/constants/states";
 import { getQuestions } from "@/lib/actions/question.action";
 
 interface SearchParams {
@@ -28,7 +30,7 @@ const Home = async ({ searchParams }: SearchParams) => {
     sort,
   });
 
-  const { questions } = data || {};
+  const { questions } = data! || {};
 
   const session = await auth();
   console.log("session:", session);
@@ -53,25 +55,19 @@ const Home = async ({ searchParams }: SearchParams) => {
         />
       </section>
       <HomeFilter />
-      {success ? (
-        <div className="mt-10 flex w-full flex-col gap-6">
-          {questions?.length ? (
-            questions?.map((question) => (
+      <DataRenderer
+        success={success}
+        error={error}
+        data={questions}
+        empty={EMPTY_QUESTION}
+        render={(questions) => (
+          <div className="mt-10 flex w-full flex-col gap-6">
+            {questions?.map((question) => (
               <QuestionCard key={question?._id} question={question} />
-            ))
-          ) : (
-            <div className="mt-10 flex w-full items-center justify-center">
-              <p className="text-dark400_light700">No questions found</p>
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="mt-10 flex w-full items-center justify-center">
-          <p className="text-dark400_light700">
-            {error?.message || "Failed to fetch questions"}
-          </p>
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      />
     </>
   );
 };

@@ -1,6 +1,5 @@
-- Remove all component's default export and convert to named export
+- Remove all default export and convert to named export
 - Create useToaster hook 
 - Create <NextImage></NextImage> 
 - add husky for eslint and typescript
 - Upgrade nextjs to version 15+
-- Upgrade 

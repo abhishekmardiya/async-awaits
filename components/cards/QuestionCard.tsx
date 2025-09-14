@@ -9,18 +9,8 @@ interface Props {
   question: Question;
 }
 
-const QuestionCard = ({
-  question: {
-    _id,
-    title,
-    content,
-    tags,
-    author,
-    createdAt,
-    upvotes,
-    answers,
-    views,
-  },
+export const QuestionCard = ({
+  question: { _id, title, tags, author, createdAt, upvotes, answers, views },
 }: Props) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
@@ -82,5 +72,3 @@ const QuestionCard = ({
     </div>
   );
 };
-
-export default QuestionCard;
