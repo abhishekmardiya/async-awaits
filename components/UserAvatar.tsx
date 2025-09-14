@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 import { Avatar, AvatarFallback } from "./ui/avatar";
 

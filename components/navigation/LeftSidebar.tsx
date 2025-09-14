@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { auth, signOut } from "@/auth";
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 import NavLinks from "./navbar/NavLinks";
 import { Button } from "../ui/button";

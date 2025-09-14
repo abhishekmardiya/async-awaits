@@ -22,7 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 import { NextLink } from "../NextLink";
 import { Input } from "../ui/input";

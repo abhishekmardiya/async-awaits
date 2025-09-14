@@ -4,7 +4,7 @@ import HomeFilter from "@/components/filters/HomeFilter";
 import { NextLink } from "@/components/NextLink";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 import { getQuestions } from "@/lib/actions/question.action";
 
 interface SearchParams {

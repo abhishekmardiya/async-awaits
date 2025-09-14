@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 import TagCard from "../cards/TagCard";
 import { NextLink } from "../NextLink";

@@ -1,11 +1,16 @@
-const ROUTES = {
+export const ROUTES = {
   HOME: "/",
   SIGN_IN: "/sign-in",
   SIGN_UP: "/sign-up",
-  ASK_QUESTION: "/ask-question",
+  SIGN_IN_WITH_OAUTH: "/auth/signin-with-oauth",
   PROFILE: (id: string) => `/profile/${id}`,
-  QUESTIONS: (id: string) => `/questions/${id}`,
-  TAGS: (id: string) => `/tags/${id}`,
-};
 
-export default ROUTES;
+  QUESTION: (id: string) => `/questions/${id}`,
+  ASK_QUESTION: "/ask-question",
+  COLLECTION: "/collection",
+  TAGS: "/tags",
+  TAG: (id: string) => `/tags/${id}`,
+
+  COMMUNITY: "/community",
+  JOBS: "/jobs",
+};

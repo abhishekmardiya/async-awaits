@@ -1,4 +1,4 @@
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
 
 import Metric from "../Metric";
@@ -30,7 +30,7 @@ const QuestionCard = ({
             {getTimeStamp(createdAt)}
           </span>
 
-          <NextLink href={ROUTES?.QUESTIONS(_id)}>
+          <NextLink href={ROUTES?.QUESTION(_id)}>
             <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
               {title}
             </h3>

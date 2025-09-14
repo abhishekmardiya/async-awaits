@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { AskQuestionSchema } from "@/lib/validations";
 
@@ -65,7 +65,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
         if (result?.success && result?.data?._id) {
           toast.success("Question updated successfully");
 
-          push(ROUTES?.QUESTIONS(result?.data?._id));
+          push(ROUTES?.QUESTION(result?.data?._id));
         } else {
           toast.error(`Failed to update question: ${result?.error?.message}`);
         }
@@ -75,7 +75,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
         if (result?.success && result?.data?._id) {
           toast.success("Question created successfully");
 
-          push(ROUTES?.QUESTIONS(result?.data?._id));
+          push(ROUTES?.QUESTION(result?.data?._id));
         } else {
           toast.error(`Failed to create question: ${result?.error?.message}`);
         }

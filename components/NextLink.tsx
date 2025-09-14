@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 interface NextLinkProps {
   children: ReactNode;

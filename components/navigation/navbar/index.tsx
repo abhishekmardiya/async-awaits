@@ -3,7 +3,7 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import { NextLink } from "@/components/NextLink";
 import { UserAvatar } from "@/components/UserAvatar";
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 import MobileNavigation from "./MobileNavigation";
 import Theme from "./Theme";

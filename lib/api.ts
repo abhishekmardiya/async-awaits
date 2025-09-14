@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { IAccount } from "@/database/account.model";
 import { IUser } from "@/database/user.model";
 
@@ -117,7 +118,7 @@ export const api = {
       providerAccountId,
     }: SignInWithOAuthParams) =>
       fetchHandler({
-        url: `${API_BASE_URL}/auth/signin-with-oauth`,
+        url: `${API_BASE_URL}${ROUTES?.SIGN_IN_WITH_OAUTH}`,
         options: {
           method: "POST",
           body: JSON.stringify({ user, provider, providerAccountId }),

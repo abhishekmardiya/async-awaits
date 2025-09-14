@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 
 import { Button } from "../ui/button";
 

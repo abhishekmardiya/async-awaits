@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import ROUTES from "@/constants/routes";
+import { ROUTES } from "@/constants/routes";
 import { getDevIconClassName } from "@/lib/utils";
 
 import { NextLink } from "../NextLink";
@@ -67,7 +67,7 @@ const TagCard = ({
         {Content}
       </button>
     ) : (
-      <NextLink href={ROUTES.TAGS(_id)} className="flex justify-between gap-2">
+      <NextLink href={ROUTES.TAG(_id)} className="flex justify-between gap-2">
         {Content}
       </NextLink>
     );
