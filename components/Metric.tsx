@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+
 import { NextLink } from "./NextLink";
 
 interface Props {
@@ -11,9 +13,10 @@ interface Props {
   textStyles: string;
   imgStyles?: string;
   isAuthor?: boolean;
+  titleStyles?: string;
 }
 
-const Metric = ({
+export const Metric = ({
   imgUrl,
   alt,
   value,
@@ -22,6 +25,7 @@ const Metric = ({
   textStyles,
   imgStyles,
   isAuthor,
+  titleStyles,
 }: Props) => {
   const metricContent = (
     <>
@@ -35,12 +39,11 @@ const Metric = ({
 
       <p className={`${textStyles} flex items-center gap-1`}>
         {value}
-
-        <span
-          className={`small-regular line-clamp-1 ${isAuthor ? "max-sm:hidden" : ""}`}
-        >
-          {title}
-        </span>
+        {title && (
+          <span className={cn("small-regular line-clamp-1", titleStyles)}>
+            {title}
+          </span>
+        )}
       </p>
     </>
   );
@@ -53,5 +56,3 @@ const Metric = ({
     <div className="flex-center gap-1">{metricContent}</div>
   );
 };
-
-export default Metric;
