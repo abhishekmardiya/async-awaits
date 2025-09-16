@@ -13,4 +13,6 @@ export const ROUTES = {
 
   COMMUNITY: "/community",
   JOBS: "/jobs",
+
+  NOT_FOUND: "/404",
 };

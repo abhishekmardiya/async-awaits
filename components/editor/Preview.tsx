@@ -12,7 +12,6 @@ export const Preview = ({ content }: { content: string }) => {
   const formattedContent = content?.replace(/\\/g, "")?.replace(/&#x20;/g, "");
 
   return (
-    // markdown is to apply the markdown styles (for the code blocks, links, etc.)
     // prose is to apply the prose styles (for the headings, paragraphs, lists, etc.)
     <section className="markdown prose grid break-words">
       <MDXRemote
