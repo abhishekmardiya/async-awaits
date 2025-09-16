@@ -6,7 +6,7 @@ import { Preview } from "@/components/editor/Preview";
 import { Metric } from "@/components/Metric";
 import { UserAvatar } from "@/components/UserAvatar";
 import { ROUTES } from "@/constants/routes";
-import { getQuestion } from "@/lib/actions/question.action";
+import { getQuestion, incrementViews } from "@/lib/actions/question.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
@@ -16,6 +16,8 @@ const QuestionDetails = async ({ params }: RouteParams) => {
   if (!success || !question) {
     redirect(ROUTES?.NOT_FOUND);
   }
+
+  await incrementViews({ questionId: id });
 
   const { author, createdAt, answers, views, tags, content, title } = question;
 
