@@ -27,7 +27,7 @@ const EditAQuestion = async ({ params }: RouteParams) => {
   }
 
   // redirect to the question page if the user is not the author
-  if (question?.author.toString() !== session?.user?.id) {
+  if (question?.author?._id?.toString() !== session?.user?.id) {
     redirect(ROUTES?.QUESTION(id));
   }
 
