@@ -5,6 +5,7 @@ import { MDXEditorMethods } from "@mdxeditor/editor";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 import { useRef, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -19,15 +20,28 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { createAnswer } from "@/lib/actions/answer.action";
+import { api } from "@/lib/api";
 import { AnswerSchema } from "@/lib/validations";
 
 const Editor = dynamic(() => import("@/components/editor"), {
   ssr: false,
 });
 
-export const AnswerForm = ({ questionId }: { questionId: string }) => {
+interface Params {
+  questionId: string;
+  questionTitle: string;
+  questionContent: string;
+}
+
+export const AnswerForm = ({
+  questionId,
+  questionTitle,
+  questionContent,
+}: Params) => {
   const [isAnswering, startAnsweringTransition] = useTransition();
   const [isAISubmitting, setIsAISubmitting] = useState(false);
+
+  const session = useSession();
 
   const editorRef = useRef<MDXEditorMethods>(null);
 
@@ -49,10 +63,56 @@ export const AnswerForm = ({ questionId }: { questionId: string }) => {
         form.reset();
 
         toast.success("Your answer has been posted successfully");
+
+        if (editorRef.current) {
+          editorRef.current.setMarkdown("");
+        }
       } else {
         toast.error(result?.error?.message);
       }
     });
+  };
+
+  const generateAIAnswer = async () => {
+    if (session.status !== "authenticated") {
+      return toast.error(
+        "Please log in. You need to be logged in to use this feature"
+      );
+    }
+
+    setIsAISubmitting(true);
+
+    try {
+      const { success, data, error } = await api.ai.getAnswer(
+        questionTitle,
+        questionContent
+      );
+
+      if (!success) {
+        return toast.error(error?.message);
+      }
+
+      // replace <br> with a space
+      const formattedAnswer = data.replace(/<br>/g, " ").toString().trim();
+
+      if (editorRef.current) {
+        editorRef.current.setMarkdown(formattedAnswer);
+
+        // manually set the value of the content field and trigger the content field to validate the field
+        form.setValue("content", formattedAnswer);
+        form.trigger("content");
+      }
+
+      toast.success("AI generated answer has been generated");
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "There was a problem with your request"
+      );
+    } finally {
+      setIsAISubmitting(false);
+    }
   };
 
   return (
@@ -64,6 +124,7 @@ export const AnswerForm = ({ questionId }: { questionId: string }) => {
         <Button
           className="btn light-border-2 gap-1.5 rounded-md border px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500"
           disabled={isAISubmitting}
+          onClick={generateAIAnswer}
         >
           {isAISubmitting ? (
             <>
