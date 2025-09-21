@@ -3,13 +3,13 @@
 import mongoose from "mongoose";
 import { revalidatePath } from "next/cache";
 
-import { action } from "../handlers/action";
-import handleError from "../handlers/error";
-import { AnswerServerSchema, GetAnswersSchema } from "../validations";
-
 import { ROUTES } from "@/constants/routes";
 import { Question } from "@/database";
 import Answer, { IAnswerDoc } from "@/database/answer.model";
+
+import { action } from "../handlers/action";
+import handleError from "../handlers/error";
+import { AnswerServerSchema, GetAnswersSchema } from "../validations";
 
 export const createAnswer = async (
   params: CreateAnswerParams

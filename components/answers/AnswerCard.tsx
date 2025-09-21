@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { Preview } from "../editor/Preview";
-import { UserAvatar } from "../UserAvatar";
-
 import { ROUTES } from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
+
+import { Preview } from "../editor/Preview";
+import { UserAvatar } from "../UserAvatar";
 
 const AnswerCard = ({ _id, author, content, createdAt }: Answer) => {
   return (
