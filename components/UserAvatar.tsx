@@ -23,7 +23,7 @@ export const UserAvatar = ({
 }: Props) => {
   const initials = name
     ?.split(" ")
-    ?.map((word: string) => word?.[0])
+    ?.map((word) => word?.[0])
     ?.join("")
     ?.toUpperCase()
     ?.slice(0, 2);

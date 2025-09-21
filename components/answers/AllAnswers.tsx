@@ -1,7 +1,7 @@
+import { EMPTY_ANSWERS } from "@/constants/states";
+
 import { DataRenderer } from "../DataRendered";
 import AnswerCard from "./AnswerCard";
-
-import { EMPTY_ANSWERS } from "@/constants/states";
 
 interface Props extends ActionResponse<Answer[]> {
   totalAnswers: number;

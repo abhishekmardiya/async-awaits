@@ -195,7 +195,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                   />
                   {!!field?.value?.length && (
                     <div className="flex-start mt-2.5 flex-wrap gap-2.5">
-                      {field?.value?.map((tag: string) => (
+                      {field?.value?.map((tag) => (
                         <TagCard
                           key={tag}
                           _id={tag}

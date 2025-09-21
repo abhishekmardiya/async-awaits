@@ -97,7 +97,7 @@ const QuestionDetails = async ({ params }: RouteParams) => {
       <Preview content={content} />
 
       <div className="mt-8 flex flex-wrap gap-2">
-        {tags?.map((tag: Tag) => (
+        {tags?.map((tag) => (
           <TagCard
             key={tag?._id}
             _id={tag?._id as string}
