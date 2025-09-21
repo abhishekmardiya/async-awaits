@@ -127,7 +127,13 @@ export const api = {
   },
 
   ai: {
-    getAnswer: (question: string, content: string): APIResponse<string> =>
+    getAnswer: ({
+      question,
+      content,
+    }: {
+      question: string;
+      content: string;
+    }): APIResponse<string> =>
       fetchHandler({
         url: `${API_BASE_URL}/ai/answers`,
         options: {

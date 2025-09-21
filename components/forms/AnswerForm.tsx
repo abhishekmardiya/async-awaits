@@ -5,6 +5,7 @@ import { MDXEditorMethods } from "@mdxeditor/editor";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useRef, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
@@ -38,6 +39,7 @@ export const AnswerForm = ({
   questionTitle,
   questionContent,
 }: Params) => {
+  const { refresh } = useRouter();
   const [isAnswering, startAnsweringTransition] = useTransition();
   const [isAISubmitting, setIsAISubmitting] = useState(false);
 
@@ -52,27 +54,6 @@ export const AnswerForm = ({
     },
   });
 
-  const handleSubmit = async (values: z.infer<typeof AnswerSchema>) => {
-    startAnsweringTransition(async () => {
-      const result = await createAnswer({
-        questionId,
-        content: values?.content,
-      });
-
-      if (result?.success) {
-        form.reset();
-
-        toast.success("Your answer has been posted successfully");
-
-        if (editorRef.current) {
-          editorRef.current.setMarkdown("");
-        }
-      } else {
-        toast.error(result?.error?.message);
-      }
-    });
-  };
-
   const generateAIAnswer = async () => {
     if (session.status !== "authenticated") {
       return toast.error(
@@ -83,10 +64,10 @@ export const AnswerForm = ({
     setIsAISubmitting(true);
 
     try {
-      const { success, data, error } = await api.ai.getAnswer(
-        questionTitle,
-        questionContent
-      );
+      const { success, data, error } = await api.ai.getAnswer({
+        question: questionTitle,
+        content: questionContent,
+      });
 
       if (!success) {
         return toast.error(error?.message);
@@ -113,6 +94,29 @@ export const AnswerForm = ({
     } finally {
       setIsAISubmitting(false);
     }
+  };
+
+  const handleSubmit = async (values: z.infer<typeof AnswerSchema>) => {
+    startAnsweringTransition(async () => {
+      const result = await createAnswer({
+        questionId,
+        content: values?.content,
+      });
+
+      if (result?.success) {
+        form.reset();
+
+        toast.success("Your answer has been posted successfully");
+
+        if (editorRef.current) {
+          editorRef.current.setMarkdown("");
+        }
+
+        refresh();
+      } else {
+        toast.error(result?.error?.message);
+      }
+    });
   };
 
   return (
@@ -158,7 +162,7 @@ export const AnswerForm = ({
                 <FormControl className="mt-3.5">
                   <Editor
                     value={field?.value}
-                    editorRef={editorRef}
+                    ref={editorRef}
                     fieldChange={field?.onChange}
                   />
                 </FormControl>
