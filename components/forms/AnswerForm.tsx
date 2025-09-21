@@ -63,10 +63,13 @@ export const AnswerForm = ({
 
     setIsAISubmitting(true);
 
+    const userAnswer = editorRef.current?.getMarkdown();
+
     try {
       const { success, data, error } = await api.ai.getAnswer({
         question: questionTitle,
         content: questionContent,
+        userAnswer,
       });
 
       if (!success) {
@@ -139,12 +142,12 @@ export const AnswerForm = ({
             <>
               <Image
                 src="/icons/stars.svg"
-                alt="Generate AI Answer"
+                alt="Enhance Answer With AI"
                 width={12}
                 height={12}
                 className="object-contain"
               />
-              Generate AI Answer
+              Enhance Answer With AI
             </>
           )}
         </Button>
