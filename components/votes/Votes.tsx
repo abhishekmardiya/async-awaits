@@ -16,7 +16,7 @@ interface Props {
 
 type VoteType = "upvote" | "downvote";
 
-export const Votesssss = ({
+export const Votes = ({
   upVotes,
   downVotes,
   hasUpVoted,
