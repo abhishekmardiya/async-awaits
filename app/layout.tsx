@@ -70,7 +70,7 @@ const MainLayout = async ({ children }: { children: ReactNode }) => {
             <Analytics />
             <SpeedInsights />
           </ThemeProvider>
-          <Toaster />
+          <Toaster position="top-center" />
         </body>
       </SessionProvider>
     </html>
