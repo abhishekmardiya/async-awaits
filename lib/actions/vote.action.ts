@@ -48,6 +48,7 @@ export async function createVote(
       if (existingVote?.voteType === voteType) {
         // If the user has already voted with the same voteType, remove the vote
         await Vote.deleteOne({ _id: existingVote?._id }).session(session);
+
         await updateVoteCount(
           { targetId, targetType, voteType, change: -1 },
           session
@@ -59,6 +60,17 @@ export async function createVote(
           { voteType },
           { new: true, session }
         );
+
+        await updateVoteCount(
+          {
+            targetId,
+            targetType,
+            voteType: existingVote?.voteType,
+            change: -1,
+          },
+          session
+        );
+
         await updateVoteCount(
           { targetId, targetType, voteType, change: 1 },
           session
@@ -79,6 +91,7 @@ export async function createVote(
           session,
         }
       );
+
       await updateVoteCount(
         { targetId, targetType, voteType, change: 1 },
         session
