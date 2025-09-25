@@ -67,7 +67,9 @@ export const Votes = ({
     <div className="flex-center gap-2.5">
       <div className="flex-center gap-1.5">
         <Image
-          src={success && hasUpVoted ? "icons/upVoted.svg" : "icons/upVote.svg"}
+          src={
+            success && hasUpVoted ? "/icons/upVoted.svg" : "/icons/upVote.svg"
+          }
           width={18}
           height={18}
           alt="upVote"
