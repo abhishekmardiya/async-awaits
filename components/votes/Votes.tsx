@@ -14,8 +14,6 @@ interface Props {
   hasDownVoted: boolean;
 }
 
-type VoteType = "upvote" | "downvote";
-
 export const Votes = ({
   upVotes,
   downVotes,

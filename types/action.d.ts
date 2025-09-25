@@ -1,3 +1,5 @@
+// !DO NOT IMPORT EXTERNAL TYPES INTO THIS FILE OR EXPORT ANY TYPE OR INTERFACE FROM THIS FILE
+
 interface SignInWithOAuthParams {
   provider: "github" | "google";
   providerAccountId: string;
@@ -46,4 +48,23 @@ interface CreateAnswerParams {
 
 interface GetAnswersParams extends PaginatedSearchParams {
   questionId: string;
+}
+
+type VoteType = "upvote" | "downvote";
+
+interface CreateVoteParams {
+  targetId: string;
+  targetType: "question" | "answer";
+  voteType: VoteType;
+}
+
+interface UpdateVoteCountParams extends CreateVoteParams {
+  change: 1 | -1;
+}
+
+type HasVotedParams = Pick<CreateVoteParams, "targetId" | "targetType">;
+
+interface HasVotedResponse {
+  hasUpvoted: boolean;
+  hasDownvoted: boolean;
 }
