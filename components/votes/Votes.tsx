@@ -2,28 +2,35 @@
 
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { use, useState } from "react";
 import { toast } from "sonner";
 
+import { createVote } from "@/lib/actions/vote.action";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
   upVotes: number;
-  hasUpVoted: boolean;
   downVotes: number;
-  hasDownVoted: boolean;
+  hasVotedPromise: Promise<ActionResponse<HasVotedResponse>>;
+  targetType: TargetType;
+  targetId: string;
 }
 
 export const Votes = ({
   upVotes,
   downVotes,
-  hasUpVoted,
-  hasDownVoted,
+  hasVotedPromise,
+  targetType,
+  targetId,
 }: Props) => {
   const session = useSession();
   const userId = session.data?.user?.id;
 
+  const { success, data } = use(hasVotedPromise);
+
   const [isLoading, setIsLoading] = useState(false);
+
+  const { hasDownVoted, hasUpVoted } = data || {};
 
   const handleVote = async (voteType: VoteType) => {
     if (!userId) {
@@ -33,6 +40,16 @@ export const Votes = ({
     setIsLoading(true);
 
     try {
+      const result = await createVote({
+        targetId,
+        targetType,
+        voteType,
+      });
+
+      if (!result?.success) {
+        return toast.error("Failed to vote");
+      }
+
       const successMessage =
         voteType === "upvote"
           ? `Upvote ${!hasUpVoted ? "added" : "removed"} successfully`
@@ -50,7 +67,9 @@ export const Votes = ({
     <div className="flex-center gap-2.5">
       <div className="flex-center gap-1.5">
         <Image
-          src={hasUpVoted ? "/icons/upvoted.svg" : "/icons/upvote.svg"}
+          src={
+            success && hasUpVoted ? "/icons/upvoted.svg" : "/icons/upvote.svg"
+          }
           width={18}
           height={18}
           alt="upvote"
@@ -68,7 +87,11 @@ export const Votes = ({
 
       <div className="flex-center gap-1.5">
         <Image
-          src={hasDownVoted ? "/icons/downvoted.svg" : "/icons/downvote.svg"}
+          src={
+            success && hasDownVoted
+              ? "/icons/downvoted.svg"
+              : "/icons/downvote.svg"
+          }
           width={18}
           height={18}
           alt="downvote"

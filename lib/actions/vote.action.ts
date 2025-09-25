@@ -1,6 +1,7 @@
 "use server";
 
 import mongoose, { ClientSession } from "mongoose";
+import { revalidatePath } from "next/cache";
 
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
@@ -10,43 +11,8 @@ import {
   UpdateVoteCountSchema,
 } from "../validations";
 
+import { ROUTES } from "@/constants/routes";
 import { Answer, Question, Vote } from "@/database";
-
-export async function updateVoteCount(
-  params: UpdateVoteCountParams,
-  session?: ClientSession
-): Promise<ActionResponse> {
-  const validationResult = await action({
-    params,
-    schema: UpdateVoteCountSchema,
-  });
-
-  if (validationResult instanceof Error) {
-    return handleError(validationResult) as ErrorResponse;
-  }
-
-  const { targetId, targetType, voteType, change } = validationResult?.params!;
-
-  const Model = targetType === "question" ? Question : Answer;
-  const voteField = voteType === "upvote" ? "upvotes" : "downvotes";
-
-  try {
-    const result = await Model.findByIdAndUpdate(
-      targetId,
-      { $inc: { [voteField]: change } },
-      { new: true, session }
-    );
-
-    if (!result)
-      return handleError(
-        new Error("Failed to update vote count")
-      ) as ErrorResponse;
-
-    return { success: true };
-  } catch (error) {
-    return handleError(error) as ErrorResponse;
-  }
-}
 
 export async function createVote(
   params: CreateVoteParams
@@ -100,9 +66,19 @@ export async function createVote(
       }
     } else {
       // If the user has not voted yet, create a new vote
-      await Vote.create([{ targetId, targetType, voteType, change: 1 }], {
-        session,
-      });
+      await Vote.create(
+        [
+          {
+            author: userId,
+            actionId: targetId,
+            actionType: targetType,
+            voteType,
+          },
+        ],
+        {
+          session,
+        }
+      );
       await updateVoteCount(
         { targetId, targetType, voteType, change: 1 },
         session
@@ -112,10 +88,48 @@ export async function createVote(
     await session.commitTransaction();
     session.endSession();
 
+    revalidatePath(ROUTES.QUESTION(targetId));
+
     return { success: true };
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
+    return handleError(error) as ErrorResponse;
+  }
+}
+
+export async function updateVoteCount(
+  params: UpdateVoteCountParams,
+  session?: ClientSession
+): Promise<ActionResponse> {
+  const validationResult = await action({
+    params,
+    schema: UpdateVoteCountSchema,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { targetId, targetType, voteType, change } = validationResult?.params!;
+
+  const Model = targetType === "question" ? Question : Answer;
+  const voteField = voteType === "upvote" ? "upvotes" : "downvotes";
+
+  try {
+    const result = await Model.findByIdAndUpdate(
+      targetId,
+      { $inc: { [voteField]: change } },
+      { new: true, session }
+    );
+
+    if (!result)
+      return handleError(
+        new Error("Failed to update vote count")
+      ) as ErrorResponse;
+
+    return { success: true };
+  } catch (error) {
     return handleError(error) as ErrorResponse;
   }
 }
@@ -146,15 +160,15 @@ export async function hasVoted(
     if (!vote) {
       return {
         success: false,
-        data: { hasUpvoted: false, hasDownvoted: false },
+        data: { hasUpVoted: false, hasDownVoted: false },
       };
     }
 
     return {
       success: true,
       data: {
-        hasUpvoted: vote.voteType === "upvote",
-        hasDownvoted: vote.voteType === "downvote",
+        hasUpVoted: vote.voteType === "upvote",
+        hasDownVoted: vote.voteType === "downvote",
       },
     };
   } catch (error) {
