@@ -38,7 +38,7 @@ const QuestionDetails = async ({ params }: RouteParams) => {
     filter: "latest",
   });
 
-  // we use "use" hook to pass this api as promise
+  // we use "use" hook to pass this api as a promise
   const hasVotedPromise = hasVoted({
     targetId: question._id,
     targetType: "question",
@@ -72,11 +72,11 @@ const QuestionDetails = async ({ params }: RouteParams) => {
           <div className="flex justify-end">
             <Suspense fallback={<div>Loading...</div>}>
               <Votes
-                upVotes={question?.upvotes}
-                downVotes={question?.downvotes}
-                hasVotedPromise={hasVotedPromise}
                 targetType="question"
                 targetId={question?._id}
+                upVotes={question?.upVotes}
+                downVotes={question?.downVotes}
+                hasVotedPromise={hasVotedPromise}
               />
             </Suspense>
           </div>

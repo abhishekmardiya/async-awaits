@@ -127,7 +127,7 @@ export async function updateVoteCount(
   const { targetId, targetType, voteType, change } = validationResult?.params!;
 
   const Model = targetType === "question" ? Question : Answer;
-  const voteField = voteType === "upvote" ? "upvotes" : "downvotes";
+  const voteField = voteType === "upVote" ? "upVotes" : "downVotes";
 
   try {
     const result = await Model.findByIdAndUpdate(
@@ -180,8 +180,8 @@ export async function hasVoted(
     return {
       success: true,
       data: {
-        hasUpVoted: vote.voteType === "upvote",
-        hasDownVoted: vote.voteType === "downvote",
+        hasUpVoted: vote.voteType === "upVote",
+        hasDownVoted: vote.voteType === "downVote",
       },
     };
   } catch (error) {

@@ -12,7 +12,7 @@ export interface IInteractionDoc extends IInteraction, Document {}
 const InteractionSchema = new Schema<IInteraction>(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    // action: 'upvote', 'downvote', 'view', 'ask_question',
+    // action: 'upVote', 'downVote', 'view', 'ask_question',
     action: { type: String, required: true },
     // actionId:questionId or answerId
     actionId: { type: Schema.Types.ObjectId, required: true },

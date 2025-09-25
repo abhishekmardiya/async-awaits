@@ -51,7 +51,7 @@ export const Votes = ({
       }
 
       const successMessage =
-        voteType === "upvote"
+        voteType === "upVote"
           ? `Upvote ${!hasUpVoted ? "added" : "removed"} successfully`
           : `Downvote ${!hasDownVoted ? "added" : "removed"} successfully`;
 
@@ -68,14 +68,14 @@ export const Votes = ({
       <div className="flex-center gap-1.5">
         <Image
           src={
-            success && hasUpVoted ? "/icons/upvoted.svg" : "/icons/upvote.svg"
+            success && hasUpVoted ? "/icons/upVoted.svg" : "/icons/upVote.svg"
           }
           width={18}
           height={18}
-          alt="upvote"
+          alt="upVote"
           className={`cursor-pointer ${isLoading && "opacity-50"}`}
           aria-label="Upvote"
-          onClick={() => !isLoading && handleVote("upvote")}
+          onClick={() => !isLoading && handleVote("upVote")}
         />
 
         <div className="flex-center background-light700_dark400 min-w-5 rounded-sm p-1">
@@ -90,14 +90,14 @@ export const Votes = ({
           src={
             success && hasDownVoted
               ? "/icons/downvoted.svg"
-              : "/icons/downvote.svg"
+              : "/icons/downVote.svg"
           }
           width={18}
           height={18}
-          alt="downvote"
+          alt="downVote"
           className={`cursor-pointer ${isLoading && "opacity-50"}`}
           aria-label="Downvote"
-          onClick={() => !isLoading && handleVote("downvote")}
+          onClick={() => !isLoading && handleVote("downVote")}
         />
 
         <div className="flex-center background-light700_dark400 min-w-5 rounded-sm p-1">
