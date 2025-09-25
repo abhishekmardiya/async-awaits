@@ -2,9 +2,8 @@
 
 import mongoose, { FilterQuery } from "mongoose";
 
-import Question from "@/database/question.model";
-import TagQuestion from "@/database/tag-question.model";
-import Tag, { ITagDoc } from "@/database/tag.model";
+import { Tag, Question, TagQuestion } from "@/database";
+import { ITagDoc } from "@/database/tag.model";
 
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
@@ -215,7 +214,6 @@ export const getQuestion = async (
   const validationResult = await action({
     params,
     schema: GetQuestionSchema,
-    authorize: true,
   });
 
   if (validationResult instanceof Error) {
