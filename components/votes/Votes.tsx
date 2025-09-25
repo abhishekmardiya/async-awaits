@@ -68,7 +68,7 @@ export const Votes = ({
       <div className="flex-center gap-1.5">
         <Image
           src={
-            success && hasUpVoted ? "/icons/upVoted.svg" : "/icons/upVote.svg"
+            success && hasUpVoted ? "/icons/upvoted.svg" : "/icons/upvote.svg"
           }
           width={18}
           height={18}
@@ -90,7 +90,7 @@ export const Votes = ({
           src={
             success && hasDownVoted
               ? "/icons/downvoted.svg"
-              : "/icons/downVote.svg"
+              : "/icons/downvote.svg"
           }
           width={18}
           height={18}
