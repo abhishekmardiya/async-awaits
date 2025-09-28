@@ -79,3 +79,7 @@ interface User {
   portfolio?: string;
   reputation?: number;
 }
+
+interface CollectionBaseParams {
+  questionId: string;
+}
