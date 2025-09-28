@@ -70,3 +70,7 @@ interface HasVotedResponse {
 }
 
 type TargetType = "question" | "answer";
+
+interface CollectionBaseParams {
+  questionId: string;
+}
