@@ -19,8 +19,9 @@ import { hasVoted } from "@/lib/actions/vote.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
 
 // getQuestion API Call --> page is rendered --> incrementViews API Call
-const QuestionDetails = async ({ params }: RouteParams) => {
+const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
   const { id } = await params;
+  const { page, pageSize, filter } = await searchParams;
 
   const { success, data: question } = await getQuestion({ questionId: id });
 
@@ -32,12 +33,11 @@ const QuestionDetails = async ({ params }: RouteParams) => {
     success: areAnswersLoaded,
     data: answersResult,
     error: answersError,
-    // TODO:get this params from searchParams
   } = await getAnswers({
     questionId: id,
-    page: 1,
-    pageSize: 10,
-    filter: "latest",
+    page: Number(page) || 1,
+    pageSize: Number(pageSize) || 10,
+    filter,
   });
 
   // we use "use" hook to pass this api as a promise
