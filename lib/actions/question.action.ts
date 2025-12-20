@@ -7,6 +7,7 @@ import { ITagDoc } from "@/database/tag.model";
 
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
+import dbConnect from "../mongoose";
 import {
   AskQuestionSchema,
   EditQuestionSchema,
@@ -337,6 +338,25 @@ export const incrementViews = async (
     return {
       success: true,
       data: { views: question.views },
+    };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
+  }
+};
+
+export const getHotQuestions = async (): Promise<
+  ActionResponse<Question[]>
+> => {
+  try {
+    await dbConnect();
+
+    const questions = await Question.find()
+      .sort({ views: -1, upvotes: -1 })
+      .limit(5);
+
+    return {
+      success: true,
+      data: JSON.parse(JSON.stringify(questions)),
     };
   } catch (error) {
     return handleError(error) as ErrorResponse;
