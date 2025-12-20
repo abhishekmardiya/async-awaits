@@ -2,4 +2,5 @@
 - Create useToaster hook 
 - Create <NextImage></NextImage> 
 - add husky for eslint and typescript
-- Upgrade nextjs to version 15+
+- Upgrade nextjs to version 16
+- Implement biome
