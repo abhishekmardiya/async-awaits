@@ -1,3 +1,5 @@
+// https://ai-sdk.dev/providers/ai-sdk-providers/google-generative-ai
+
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { NextResponse } from "next/server";
@@ -23,6 +25,7 @@ export async function POST(req: Request) {
     const { text } = await generateText({
       model: google("gemini-2.5-flash"),
       prompt: `Generate a markdown-formatted response to the following question: "${question}".  
+      
       
       Consider the provided context:  
       **Context:** ${content}  
