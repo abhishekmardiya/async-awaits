@@ -74,3 +74,7 @@ type TargetType = "question" | "answer";
 interface CollectionBaseParams {
   questionId: string;
 }
+
+interface GetUserParams {
+  userId: string;
+}

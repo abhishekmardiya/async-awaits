@@ -31,6 +31,9 @@ const config: Config = {
           "850": "#FDFDFD",
           "900": "#FFFFFF",
         },
+        link: {
+          "100": "#1DA1F2",
+        },
       },
       boxShadow: {
         "light-100":
@@ -62,4 +65,5 @@ const config: Config = {
   },
   plugins: [tailwindCSSAnimate, tailwindCssTypography],
 };
+
 export default config;
