@@ -349,7 +349,12 @@ body {
 }
 
 .dark .mdxeditor-toolbar button:hover svg {
-  color: #000 !important;
+  color: #ffffff !important;
+}
+
+.dark .mdxeditor-toolbar button[aria-pressed="true"] svg {
+  color: #ffffff !important;
+  background-color: #334155 !important;
 }
 
 .dark .mdxeditor-toolbar [role="separator"] {
@@ -398,6 +403,42 @@ code {
 [data-lexical-editor="true"] {
   height: 350px !important;
   overflow-y: auto !important;
+}
+
+.dark [data-lexical-editor="true"] {
+  color: #e2e8f0 !important;
+}
+
+.dark [data-lexical-editor="true"] p {
+  color: #cbd5e1 !important;
+}
+
+.dark [data-lexical-editor="true"] h1,
+.dark [data-lexical-editor="true"] h2,
+.dark [data-lexical-editor="true"] h3,
+.dark [data-lexical-editor="true"] h4,
+.dark [data-lexical-editor="true"] h5,
+.dark [data-lexical-editor="true"] h6 {
+  color: #ffffff !important;
+}
+
+.dark [data-lexical-editor="true"] ul,
+.dark [data-lexical-editor="true"] ol,
+.dark [data-lexical-editor="true"] li {
+  color: #cbd5e1 !important;
+}
+
+.dark [data-lexical-editor="true"] blockquote {
+  color: #cbd5e1 !important;
+}
+
+.dark [data-lexical-editor="true"] strong {
+  color: #ffffff !important;
+}
+
+.dark [data-lexical-editor="true"] code {
+  color: #f1f5f9 !important;
+  background-color: #1e293b !important;
 }
 
 @layer base {

@@ -1,12 +1,18 @@
 // https://ai-sdk.dev/providers/ai-sdk-providers/google-generative-ai
+// https://ai-sdk.dev/cookbook/rsc/stream-text
+
+// The API route uses createStreamableValue (for RSC), but it's an API route.so we have to use ReadableStream
 
 import { google } from "@ai-sdk/google";
-import { generateText } from "ai";
+import { streamText } from "ai";
 import { NextResponse } from "next/server";
 
 import handleError from "@/lib/handlers/error";
 import { ValidationError } from "@/lib/http-errors";
 import { AIAnswerSchema } from "@/lib/validations";
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
   const { question, content, userAnswer } = await req.json();
@@ -22,9 +28,10 @@ export async function POST(req: Request) {
       throw new ValidationError(validatedData.error.flatten().fieldErrors);
     }
 
-    const { text } = await generateText({
+    const { textStream } = streamText({
       model: google("gemini-2.5-flash"),
-      prompt: `Generate a markdown-formatted response to the following question: "${question}".  
+      prompt: `Generate a markdown-formatted response to the following question: "${question}" and provide example code blocks for the answer if necessary.  
+      
       
       
       Consider the provided context:  
@@ -39,7 +46,26 @@ export async function POST(req: Request) {
         "You are a helpful assistant that provides informative responses in markdown format. Use appropriate markdown syntax for headings, lists, code blocks, and emphasis where necessary. For code blocks, use short-form smaller case language identifiers (e.g., 'js' for JavaScript, 'py' for Python, 'ts' for TypeScript, 'html' for HTML, 'css' for CSS, etc.).",
     });
 
-    return NextResponse.json({ success: true, data: text }, { status: 200 });
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const delta of textStream) {
+            controller.enqueue(encoder.encode(delta));
+          }
+          controller.close();
+        } catch (error) {
+          controller.error(error);
+        }
+      },
+    });
+
+    return new NextResponse(stream, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+      },
+    });
   } catch (error) {
     return handleError(error, "api") as APIErrorResponse;
   }

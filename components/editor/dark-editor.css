@@ -63,3 +63,103 @@
   --basePageBg: black;
   background: var(--basePageBg);
 }
+
+/* Editor content area text visibility */
+.dark .dark-editor .mdxeditor {
+  color: #e2e8f0 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable {
+  color: #e2e8f0 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable > div {
+  color: #e2e8f0 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable p {
+  color: #cbd5e1 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable h1,
+.dark .dark-editor .mdxeditor-root-contenteditable h2,
+.dark .dark-editor .mdxeditor-root-contenteditable h3,
+.dark .dark-editor .mdxeditor-root-contenteditable h4,
+.dark .dark-editor .mdxeditor-root-contenteditable h5,
+.dark .dark-editor .mdxeditor-root-contenteditable h6 {
+  color: #ffffff !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable ul,
+.dark .dark-editor .mdxeditor-root-contenteditable ol {
+  color: #cbd5e1 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable li {
+  color: #cbd5e1 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable blockquote {
+  color: #cbd5e1 !important;
+  border-left-color: #64748b !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable code {
+  color: #f1f5f9 !important;
+  background-color: #1e293b !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable pre {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable strong {
+  color: #ffffff !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable em {
+  color: #cbd5e1 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable a {
+  color: #60a5fa !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable table {
+  color: #cbd5e1 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable table th {
+  color: #ffffff !important;
+  border-color: #475569 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable table td {
+  color: #cbd5e1 !important;
+  border-color: #475569 !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable hr {
+  border-color: #475569 !important;
+}
+
+/* Placeholder text */
+.dark .dark-editor .mdxeditor-root-contenteditable [data-placeholder]::before {
+  color: #64748b !important;
+}
+
+/* Editor wrapper background */
+.dark .dark-editor .mdxeditor {
+  background-color: #1e293b !important;
+}
+
+.dark .dark-editor .mdxeditor-root-contenteditable {
+  background-color: #1e293b !important;
+}
+
+/* Selection highlight */
+.dark .dark-editor .mdxeditor-root-contenteditable ::selection {
+  background-color: #334155 !important;
+  color: #ffffff !important;
+}

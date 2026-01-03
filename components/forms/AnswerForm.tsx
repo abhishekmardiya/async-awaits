@@ -21,7 +21,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { createAnswer } from "@/lib/actions/answer.action";
-import { api } from "@/lib/api";
 import { AnswerSchema } from "@/lib/validations";
 
 const Editor = dynamic(() => import("@/components/editor"), {
@@ -46,6 +45,7 @@ export const AnswerForm = ({
   const session = useSession();
 
   const editorRef = useRef<MDXEditorMethods>(null);
+  const generationRef = useRef<string>("");
 
   const form = useForm<z.infer<typeof AnswerSchema>>({
     resolver: zodResolver(AnswerSchema),
@@ -66,25 +66,68 @@ export const AnswerForm = ({
     const userAnswer = editorRef.current?.getMarkdown();
 
     try {
-      const { success, data, error } = await api.ai.getAnswer({
-        question: questionTitle,
-        content: questionContent,
-        userAnswer,
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const response = await fetch(`${API_BASE_URL}/ai/answers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: questionTitle,
+          content: questionContent,
+          userAnswer,
+        }),
       });
 
-      if (!success) {
-        return toast.error(error?.message);
+      if (!response?.ok) {
+        let errorData: { error?: { message?: string } } = {};
+
+        try {
+          errorData = await response?.json();
+        } catch {
+          errorData = {};
+        }
+
+        return toast.error(
+          errorData?.error?.message || "Failed to generate answer"
+        );
       }
 
-      // replace <br> with a space
-      const formattedAnswer = data.replace(/<br>/g, " ").toString().trim();
+      // Reset generation ref
+      generationRef.current = "";
 
-      if (editorRef.current) {
-        editorRef.current.setMarkdown(formattedAnswer);
+      if (editorRef.current && response?.body) {
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
 
-        // manually set the value of the content field and trigger the content field to validate the field
-        form.setValue("content", formattedAnswer);
-        form.trigger("content");
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+
+            if (done) {
+              break;
+            }
+
+            // Decode the chunk and accumulate in the ref
+            const chunk = decoder.decode(value, { stream: true });
+            generationRef.current = `${generationRef.current}${chunk}`;
+
+            // Replace <br> with a space and format
+            const formattedAnswer = generationRef.current
+              .replace(/<br>/g, " ")
+              .toString()
+              .trim();
+
+            // Update editor with accumulated content
+            editorRef.current.setMarkdown(formattedAnswer);
+
+            // Manually set the value of the content field and trigger the content field to validate the field
+            form.setValue("content", formattedAnswer);
+            form.trigger("content");
+          }
+        } finally {
+          reader.releaseLock();
+        }
       }
 
       toast.success("AI generated answer has been generated");
