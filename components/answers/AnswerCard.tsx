@@ -9,6 +9,7 @@ import { Preview } from "../editor/Preview";
 import EditDeleteAction from "../user/EditDeleteAction";
 import { UserAvatar } from "../UserAvatar";
 import { Votes } from "../votes/Votes";
+import { VoteShimmer } from "../VoteShimmer";
 
 interface Props extends Answer {
   containerClasses?: string;
@@ -40,7 +41,7 @@ export const AnswerCard = ({
       <span id={`answer-${_id}`} className="hash-span" />
 
       {showActionBtns && (
-        <div className="background-light800 flex-center absolute -right-2 -top-5 size-9 rounded-full">
+        <div className="background-light800_dark200 flex-center absolute -right-2 -top-5 size-9 rounded-full">
           <EditDeleteAction type="Answer" itemId={_id} />
         </div>
       )}
@@ -70,7 +71,7 @@ export const AnswerCard = ({
         </div>
 
         <div className="flex justify-end">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<VoteShimmer />}>
             <Votes
               targetType="answer"
               targetId={_id}

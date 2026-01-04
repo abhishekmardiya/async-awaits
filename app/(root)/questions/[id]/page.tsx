@@ -11,6 +11,7 @@ import { Metric } from "@/components/Metric";
 import { SaveQuestion } from "@/components/question/SaveQuestion";
 import { UserAvatar } from "@/components/UserAvatar";
 import { Votes } from "@/components/votes/Votes";
+import { VoteShimmer } from "@/components/VoteShimmer";
 import { ROUTES } from "@/constants/routes";
 import { getAnswers } from "@/lib/actions/answer.action";
 import { hasSavedQuestion } from "@/lib/actions/collection.action";
@@ -77,7 +78,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
           </div>
 
           <div className="flex items-center justify-end gap-4">
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<VoteShimmer />}>
               <Votes
                 targetType="question"
                 targetId={question?._id}
@@ -87,7 +88,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
               />
             </Suspense>
 
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<VoteShimmer />}>
               <SaveQuestion
                 questionId={question?._id}
                 hasSavedQuestionPromise={hasSavedQuestionPromise}
