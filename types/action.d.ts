@@ -50,7 +50,7 @@ interface GetAnswersParams extends PaginatedSearchParams {
   questionId: string;
 }
 
-type VoteType = "upVote" | "downVote";
+type VoteType = "upvote" | "downvote";
 
 interface CreateVoteParams {
   targetId: string;
@@ -76,5 +76,14 @@ interface CollectionBaseParams {
 }
 
 interface GetUserParams {
+  userId: string;
+}
+
+interface GetUserQuestionsParams
+  extends Omit<PaginatedSearchParams, "query" | "filter" | "sort"> {
+  userId: string;
+}
+
+interface GetUserAnswersParams extends PaginatedSearchParams {
   userId: string;
 }

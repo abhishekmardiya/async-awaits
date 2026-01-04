@@ -80,8 +80,8 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
               <Votes
                 targetType="question"
                 targetId={question?._id}
-                upVotes={question?.upVotes}
-                downVotes={question?.downVotes}
+                upvotes={question?.upvotes}
+                downvotes={question?.downvotes}
                 hasVotedPromise={hasVotedPromise}
               />
             </Suspense>

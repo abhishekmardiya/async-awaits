@@ -3,6 +3,9 @@
 import mongoose, { ClientSession } from "mongoose";
 import { revalidatePath } from "next/cache";
 
+import { ROUTES } from "@/constants/routes";
+import { Answer, Question, Vote } from "@/database";
+
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
 import {
@@ -10,9 +13,6 @@ import {
   HasVotedSchema,
   UpdateVoteCountSchema,
 } from "../validations";
-
-import { ROUTES } from "@/constants/routes";
-import { Answer, Question, Vote } from "@/database";
 
 export async function createVote(
   params: CreateVoteParams
@@ -127,7 +127,7 @@ export async function updateVoteCount(
   const { targetId, targetType, voteType, change } = validationResult?.params!;
 
   const Model = targetType === "question" ? Question : Answer;
-  const voteField = voteType === "upVote" ? "upVotes" : "downVotes";
+  const voteField = voteType === "upvote" ? "upvotes" : "downvotes";
 
   try {
     const result = await Model.findByIdAndUpdate(
@@ -180,8 +180,8 @@ export async function hasVoted(
     return {
       success: true,
       data: {
-        hasUpVoted: vote.voteType === "upVote",
-        hasDownVoted: vote.voteType === "downVote",
+        hasUpVoted: vote.voteType === "upvote",
+        hasDownVoted: vote.voteType === "downvote",
       },
     };
   } catch (error) {

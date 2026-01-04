@@ -30,10 +30,10 @@ export async function POST(req: Request) {
 
     const { textStream } = streamText({
       model: google("gemini-2.5-flash"),
+      system:
+        "You are a helpful assistant that provides informative responses in markdown format. Use appropriate markdown syntax for headings, lists, code blocks, and emphasis where necessary. For code blocks, use short-form smaller case language identifiers (e.g., 'js' for JavaScript, 'py' for Python, 'ts' for TypeScript, 'html' for HTML, 'css' for CSS, etc.).every code block must have opening and closing fences, never generate empty code blocks, never generate unfinished markdown, prefer indented code blocks over fenced blocks, and do not nest code blocks inside lists or tables.",
       prompt: `Generate a markdown-formatted response to the following question: "${question}" and provide example code blocks for the answer if necessary.  
-      
-      
-      
+
       Consider the provided context:  
       **Context:** ${content}  
       
@@ -42,8 +42,6 @@ export async function POST(req: Request) {
       
       Prioritize the user's answer only if it's correct. If it's incomplete or incorrect, improve or correct it while keeping the response concise and to the point. 
       Provide the final answer in markdown format.`,
-      system:
-        "You are a helpful assistant that provides informative responses in markdown format. Use appropriate markdown syntax for headings, lists, code blocks, and emphasis where necessary. For code blocks, use short-form smaller case language identifiers (e.g., 'js' for JavaScript, 'py' for Python, 'ts' for TypeScript, 'html' for HTML, 'css' for CSS, etc.).",
     });
 
     const encoder = new TextEncoder();

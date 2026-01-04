@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const QuestionCard = ({
-  question: { _id, title, tags, author, createdAt, upVotes, answers, views },
+  question: { _id, title, tags, author, createdAt, upvotes, answers, views },
 }: Props) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
@@ -50,7 +50,7 @@ export const QuestionCard = ({
           <Metric
             imgUrl="/icons/like.svg"
             alt="like"
-            value={upVotes}
+            value={upvotes}
             title=" Votes"
             textStyles="small-medium text-dark400_light800"
           />

@@ -183,7 +183,7 @@ export const CreateVoteSchema = z.object({
   targetType: z.enum(["question", "answer"], {
     message: "Invalid target type.",
   }),
-  voteType: z.enum(["upVote", "downVote"], { message: "Invalid vote type." }),
+  voteType: z.enum(["upvote", "downvote"], { message: "Invalid vote type." }),
 });
 
 export const UpdateVoteCountSchema = CreateVoteSchema.extend({
@@ -200,5 +200,13 @@ export const CollectionBaseSchema = z.object({
 });
 
 export const GetUserSchema = z.object({
+  userId: z.string().min(1, { message: "User ID is required." }),
+});
+
+export const GetUserQuestionsSchema = PaginatedSearchParamsSchema.extend({
+  userId: z.string().min(1, { message: "User ID is required." }),
+});
+
+export const GetUsersAnswersSchema = PaginatedSearchParamsSchema.extend({
   userId: z.string().min(1, { message: "User ID is required." }),
 });

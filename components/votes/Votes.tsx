@@ -9,16 +9,16 @@ import { createVote } from "@/lib/actions/vote.action";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
-  upVotes: number;
-  downVotes: number;
+  upvotes: number;
+  downvotes: number;
   hasVotedPromise: Promise<ActionResponse<HasVotedResponse>>;
   targetType: TargetType;
   targetId: string;
 }
 
 export const Votes = ({
-  upVotes,
-  downVotes,
+  upvotes,
+  downvotes,
   hasVotedPromise,
   targetType,
   targetId,
@@ -51,7 +51,7 @@ export const Votes = ({
       }
 
       const successMessage =
-        voteType === "upVote"
+        voteType === "upvote"
           ? `Upvote ${!hasUpVoted ? "added" : "removed"} successfully`
           : `Downvote ${!hasDownVoted ? "added" : "removed"} successfully`;
 
@@ -72,15 +72,15 @@ export const Votes = ({
           }
           width={18}
           height={18}
-          alt="upVote"
+          alt="upvote"
           className={`cursor-pointer ${isLoading && "opacity-50"}`}
           aria-label="Upvote"
-          onClick={() => !isLoading && handleVote("upVote")}
+          onClick={() => !isLoading && handleVote("upvote")}
         />
 
         <div className="flex-center background-light700_dark400 min-w-5 rounded-sm p-1">
           <p className="subtle-medium text-dark400_light900">
-            {formatNumber(upVotes)}
+            {formatNumber(upvotes)}
           </p>
         </div>
       </div>
@@ -94,15 +94,15 @@ export const Votes = ({
           }
           width={18}
           height={18}
-          alt="downVote"
+          alt="downvote"
           className={`cursor-pointer ${isLoading && "opacity-50"}`}
           aria-label="Downvote"
-          onClick={() => !isLoading && handleVote("downVote")}
+          onClick={() => !isLoading && handleVote("downvote")}
         />
 
         <div className="flex-center background-light700_dark400 min-w-5 rounded-sm p-1">
           <p className="subtle-medium text-dark400_light900">
-            {formatNumber(downVotes)}
+            {formatNumber(downvotes)}
           </p>
         </div>
       </div>

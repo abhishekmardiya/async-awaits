@@ -279,7 +279,7 @@ export const getQuestions = async (
       sortCriteria = { createdAt: -1 };
       break;
     case "popular":
-      sortCriteria = { upVotes: -1 };
+      sortCriteria = { upvotes: -1 };
       break;
     default:
       sortCriteria = { createdAt: -1 };

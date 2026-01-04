@@ -19,8 +19,8 @@ interface Question {
   tags: Tag[];
   author: Author;
   createdAt: Date;
-  upVotes: number;
-  downVotes: number;
+  upvotes: number;
+  downvotes: number;
   answers: number;
   views: number;
 }
@@ -59,8 +59,9 @@ interface Answer {
   author: Author;
   content: string;
   createdAt: Date;
-  upVotes: number;
-  downVotes: number;
+  upvotes: number;
+  downvotes: number;
+  question: string;
 }
 
 interface Collection {
