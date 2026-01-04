@@ -5,3 +5,5 @@
 - Upgrade nextjs to version 16
 - Implement biome
 - Dark theme is not working properly in markdown editor answer's section
+- Edit question and answer in question page
+- Create toast custom hook

@@ -19,7 +19,7 @@ export const Pagination = ({
   containerClasses,
 }: Props) => {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const { push } = useRouter();
 
   const handleNavigation = (type: "prev" | "next") => {
     const nextPageNumber =
@@ -31,7 +31,7 @@ export const Pagination = ({
       value: nextPageNumber.toString(),
     });
 
-    router.push(newUrl);
+    push(newUrl);
   };
 
   return (
