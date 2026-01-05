@@ -2,6 +2,7 @@
 
 import mongoose, { FilterQuery } from "mongoose";
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 
 import {
   Tag,
@@ -24,6 +25,7 @@ import {
   IncrementViewsSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
+import { createInteraction } from "./interaction.action";
 
 export const createQuestion = async (
   params: CreateQuestionParams
@@ -99,6 +101,16 @@ export const createQuestion = async (
       },
       { session }
     );
+
+    // log the interaction
+    after(async () => {
+      await createInteraction({
+        action: "post",
+        actionId: question._id.toString(),
+        actionTarget: "question",
+        authorId: userId as string,
+      });
+    });
 
     await session.commitTransaction();
 

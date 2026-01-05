@@ -1,11 +1,17 @@
 import mongoose from "mongoose";
 
+import { Interaction, User } from "@/database";
+import { IInteractionDoc } from "@/database/interaction.model";
+
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
 import { CreateInteractionSchema } from "../validations";
 
-import { Interaction, User } from "@/database";
-import { IInteractionDoc } from "@/database/interaction.model";
+// Why use next/after?
+// Because tracking interactions like posts, votes, or views feels more like logging activity. Sure, there’s reputation logic involved, but these tasks shouldn’t block the core operation, like creating a question or casting a vote. The user shouldn’t have to wait for all that to finish—these things can run behind the scenes.
+// That means faster responses, snappier UI, and a better user experience overall.
+
+// DOCS : /docs/reputation-system.md & /docs/ways-to-handle-reputations.md
 
 export async function createInteraction(
   params: CreateInteractionParams
