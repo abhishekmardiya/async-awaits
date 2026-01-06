@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { BADGE_CRITERIA } from "@/constants";
 import { techMap } from "@/constants/techMap";
 
 export const cn = (...inputs: ClassValue[]) => {
@@ -87,4 +88,55 @@ export const formatNumber = (number: number) => {
   } else {
     return number?.toString();
   }
+};
+
+/* 
+DOC: /docs/gamification-structure.md
+
+This function takes your activity stats, compares them to the rules, and returns how many of each badge the user deserves
+
+/*
+Example:
+assignBadges({
+  criteria: [
+    { type: "QUESTION_COUNT", count: 5 },
+    { type: "ANSWER_COUNT", count: 20 },
+    { type: "QUESTION_UPVOTES", count: 25 },
+    { type: "ANSWER_UPVOTES", count: 90 },
+    { type: "TOTAL_VIEWS", count: 880 },
+  ],
+});
+
+returns: {
+  GOLD: 0,
+  SILVER: 1,
+  BRONZE: 2,
+}
+*/
+export const assignBadges = (params: {
+  criteria: {
+    type: keyof typeof BADGE_CRITERIA;
+    count: number;
+  }[];
+}) => {
+  const badgeCounts: Badges = {
+    GOLD: 0,
+    SILVER: 0,
+    BRONZE: 0,
+  };
+
+  const { criteria } = params;
+
+  criteria.forEach((item) => {
+    const { type, count } = item;
+    const badgeLevels = BADGE_CRITERIA[type];
+
+    Object.keys(badgeLevels).forEach((level) => {
+      if (count >= badgeLevels[level as keyof typeof badgeLevels]) {
+        badgeCounts[level as keyof Badges] += 1;
+      }
+    });
+  });
+
+  return badgeCounts;
 };

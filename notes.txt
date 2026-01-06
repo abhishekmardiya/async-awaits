@@ -1,9 +1,10 @@
-- Remove all default export and convert to named export
-- Create useToaster hook 
-- Create <NextImage></NextImage> 
-- add husky for eslint and typescript
-- Upgrade nextjs to version 16
-- Implement biome
-- Dark theme is not working properly in markdown editor answer's section
-- Edit question and answer in question page
-- Create toast custom hook
+- Refactor all default exports to named exports
+- Develop a `useToaster` custom hook
+- Implement a `<NextImage />` component
+- Set up Husky for pre-commit linting with ESLint and TypeScript
+- Upgrade Next.js to version 16
+- Integrate Biome for code formatting and linting
+- Fix the dark theme issue in the markdown editor for the answer section
+- Enable edit functionality for questions and answers on the question page
+- Create a custom toast notification hook
+- Set up an automated daily question workflow using n8n to schedule, generate, and post a question at a specified time each day

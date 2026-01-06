@@ -18,6 +18,7 @@ import {
   getUser,
   getUserQuestions,
   getUsersAnswers,
+  getUserStats,
   getUserTopTags,
 } from "@/lib/actions/user.action";
 
@@ -28,9 +29,14 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
   if (!id) notFound();
 
   const loggedInUser = await auth();
-  const { success, data, error } = await getUser({
+  const {
+    success,
+    data: userData,
+    error,
+  } = await getUser({
     userId: id,
   });
+  const { user } = userData!;
 
   if (!success)
     return (
@@ -39,26 +45,31 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
       </div>
     );
 
-  const { user, totalQuestions, totalAnswers } = data!;
   const { _id, name, image, portfolio, location, createdAt, username, bio } =
     user;
 
-  const [userQuestionsResult, userAnswersResult, userTopTagsResult] =
-    await Promise.allSettled([
-      getUserQuestions({
-        userId: id,
-        page: Number(page) || 1,
-        pageSize: Number(pageSize) || 10,
-      }),
-      getUsersAnswers({
-        userId: id,
-        page: Number(page) || 1,
-        pageSize: Number(pageSize) || 10,
-      }),
-      getUserTopTags({
-        userId: id,
-      }),
-    ]);
+  // FIXME: Implement individual suspense boundaries for each API call
+  const [
+    userQuestionsResult,
+    userAnswersResult,
+    userTopTagsResult,
+    userStatsResult,
+  ] = await Promise.allSettled([
+    getUserQuestions({
+      userId: id,
+      page: Number(page) || 1,
+      pageSize: Number(pageSize) || 10,
+    }),
+    getUsersAnswers({
+      userId: id,
+      page: Number(page) || 1,
+      pageSize: Number(pageSize) || 10,
+    }),
+    getUserTopTags({
+      userId: id,
+    }),
+    getUserStats({ userId: id }),
+  ]);
 
   const {
     success: userQuestionsSuccess,
@@ -96,9 +107,23 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
         error: { message: "Failed to fetch tags" },
       };
 
+  const {
+    // success: userStatsSuccess,
+    data: userStats,
+    // error: userStatsError,
+  } =
+    userStatsResult.status === "fulfilled"
+      ? userStatsResult.value
+      : {
+          // success: false,
+          data: null,
+          // error: { message: "Failed to fetch stats" },
+        };
+
   const { questions, isNext: hasMoreQuestions } = userQuestions!;
   const { answers, isNext: hasMoreAnswers } = userAnswers!;
   const { tags } = userTopTags!;
+  const { totalQuestions, totalAnswers, badges } = userStats!;
 
   return (
     <>
@@ -157,12 +182,7 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
       <Stats
         totalQuestions={totalQuestions}
         totalAnswers={totalAnswers}
-        // TODO: get badges from user
-        badges={{
-          GOLD: 0,
-          SILVER: 0,
-          BRONZE: 0,
-        }}
+        badges={badges || { GOLD: 0, SILVER: 0, BRONZE: 0 }}
         reputationPoints={user.reputation || 0}
       />
 
