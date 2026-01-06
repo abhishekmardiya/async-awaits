@@ -1,4 +1,5 @@
-import { Types, Schema, models, model, Document } from "mongoose";
+import { type Document, model, models, Schema, type Types } from "mongoose";
+import { InteractionActionEnums } from "@/constants";
 
 export interface IInteraction {
   user: Types.ObjectId;
@@ -6,17 +7,6 @@ export interface IInteraction {
   actionId: Types.ObjectId;
   actionType: string;
 }
-
-export const InteractionActionEnums = [
-  "view",
-  "upvote",
-  "downvote",
-  "bookmark",
-  "post",
-  "edit",
-  "delete",
-  "search",
-] as const;
 
 export interface IInteractionDoc extends IInteraction, Document {}
 
