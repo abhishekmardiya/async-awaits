@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import { BADGE_CRITERIA } from "@/constants";
@@ -82,9 +82,9 @@ export const getTimeStamp = (createdAt: Date) => {
 
 export const formatNumber = (number: number) => {
   if (number >= 1000000) {
-    return (number / 1000000)?.toFixed(1) + "M";
+    return `${(number / 1000000)?.toFixed(1)}M`;
   } else if (number >= 1000) {
-    return (number / 1000)?.toFixed(1) + "K";
+    return `${(number / 1000)?.toFixed(1)}K`;
   } else {
     return number?.toString();
   }

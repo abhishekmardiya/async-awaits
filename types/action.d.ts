@@ -1,5 +1,7 @@
 // !DO NOT IMPORT EXTERNAL TYPES INTO THIS FILE OR EXPORT ANY TYPE OR INTERFACE FROM THIS FILE
 
+/** biome-ignore-all lint/correctness/noUnusedVariables: This file is used to define global types and interfaces for the application */
+
 interface SignInWithOAuthParams {
   provider: "github" | "google";
   providerAccountId: string;

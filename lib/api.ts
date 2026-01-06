@@ -1,6 +1,6 @@
 import { ROUTES } from "@/constants/routes";
-import { IAccount } from "@/database/account.model";
-import { IUser } from "@/database/user.model";
+import type { IAccount } from "@/database/account.model";
+import type { IUser } from "@/database/user.model";
 
 import { fetchHandler } from "./handlers/fetch";
 

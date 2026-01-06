@@ -1,9 +1,8 @@
 - Refactor all default exports to named exports
 - Develop a `useToaster` custom hook
 - Implement a `<NextImage />` component
-- Set up Husky for pre-commit linting with ESLint and TypeScript
+- Set up Husky for pre-commit linting with Biome and TypeScript
 - Upgrade Next.js to version 16
-- Integrate Biome for code formatting and linting
 - Fix the dark theme issue in the markdown editor for the answer section
 - Enable edit functionality for questions and answers on the question page
 - Create a custom toast notification hook

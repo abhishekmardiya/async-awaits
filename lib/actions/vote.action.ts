@@ -1,6 +1,6 @@
 "use server";
 
-import mongoose, { ClientSession } from "mongoose";
+import mongoose, { type ClientSession } from "mongoose";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 

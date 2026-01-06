@@ -1,8 +1,10 @@
 /* This code ensures an efficient MongoDB connection in a Next.js app by caching the connection globally to prevent multiple connections.
  */
 
-import mongoose, { Mongoose } from "mongoose";
-
+import type { Mongoose } from "mongoose";
+// FIXME: this "mongoose" is unused import or not ?
+// biome-ignore lint/correctness/noUnusedImports: -
+import mongoose from "mongoose";
 import logger from "./logger";
 
 // We need to ensure that all models are already loaded before we run any logic.
@@ -24,7 +26,7 @@ declare global {
   /* `global.mongoose` is a global variable used to share the connection between different parts of the application. It is used to prevent multiple connections to the same database.
    */
 
-  // eslint-disable-next-line no-var
+  // biome-ignore lint/suspicious/noRedeclare: -
   var mongoose: MongooseCache;
 }
 

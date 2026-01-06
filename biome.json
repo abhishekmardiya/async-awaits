@@ -1,0 +1,69 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noUnknownAtRules": "off",
+        "noArrayIndexKey": "off",
+        "noTsIgnore": "error",
+        "noNonNullAssertedOptionalChain": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off",
+        "noUselessFragments": "error"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "style": {
+        "useNodejsImportProtocol": "error",
+        "noNonNullAssertion": "off",
+        "useImportType": "error"
+      },
+      "correctness": {
+        "noUnusedImports": "error",
+        "useExhaustiveDependencies": "warn",
+        "noUnusedVariables": "error"
+      },
+      "a11y": {
+        "noStaticElementInteractions": "off",
+        "useKeyWithClickEvents": "off",
+        "noAutofocus": "warn",
+        "useSemanticElements": "warn",
+        "noLabelWithoutControl": "warn"
+      }
+    },
+    "domains": {
+      "next": "recommended",
+      "react": "recommended"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "trailingCommas": "es5"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
+}
