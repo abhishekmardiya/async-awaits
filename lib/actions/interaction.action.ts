@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 import { Interaction, User } from "@/database";
-import { IInteractionDoc } from "@/database/interaction.model";
+import type { IInteractionDoc } from "@/database/interaction.model";
 
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";

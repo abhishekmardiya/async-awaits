@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import slugify from "slugify";
 
 import { Account, User } from "@/database";

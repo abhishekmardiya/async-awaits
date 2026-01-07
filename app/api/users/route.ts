@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { User } from "@/database";
 import handleError from "@/lib/handlers/error";
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if email or username already exists
-    const { email, username } = validatedData?.data;
+    const { email, username } = validatedData?.data!;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {

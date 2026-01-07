@@ -1,8 +1,6 @@
 import Link from "next/link";
-
-import { UserAvatar } from "../UserAvatar";
-
 import { ROUTES } from "@/constants/routes";
+import { UserAvatar } from "../UserAvatar";
 
 const UserCard = ({ _id, name, image, username }: User) => (
   <div className="shadow-light100_darknone w-full xs:w-[230px]">

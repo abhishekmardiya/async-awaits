@@ -2,9 +2,9 @@ import { AnswerFilters } from "@/constants/filters";
 import { EMPTY_ANSWERS } from "@/constants/states";
 
 import { DataRenderer } from "../DataRendered";
-import { AnswerCard } from "./AnswerCard";
 import { CommonFilter } from "../filters/CommonFilter";
 import { Pagination } from "../Pagination";
+import { AnswerCard } from "./AnswerCard";
 
 interface Props extends ActionResponse<Answer[]> {
   totalAnswers: number;

@@ -6,10 +6,10 @@ import { hasVoted } from "@/lib/actions/vote.action";
 import { cn, getTimeStamp } from "@/lib/utils";
 
 import { Preview } from "../editor/Preview";
-import EditDeleteAction from "../user/EditDeleteAction";
 import { UserAvatar } from "../UserAvatar";
-import { Votes } from "../votes/Votes";
+import EditDeleteAction from "../user/EditDeleteAction";
 import { VoteShimmer } from "../VoteShimmer";
+import { Votes } from "../votes/Votes";
 
 interface Props extends Answer {
   containerClasses?: string;

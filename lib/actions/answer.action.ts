@@ -5,8 +5,8 @@ import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 
 import { ROUTES } from "@/constants/routes";
-import { Question, Answer, Vote } from "@/database";
-import { IAnswerDoc } from "@/database/answer.model";
+import { Answer, Question, Vote } from "@/database";
+import type { IAnswerDoc } from "@/database/answer.model";
 
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";

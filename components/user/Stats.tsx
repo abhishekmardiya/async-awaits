@@ -35,9 +35,11 @@ export const Stats = ({
     <div className="mt-3">
       <h4 className="h3-semibold text-dark200_light900">
         Stats{" "}
-        <span className="small-semibold primary-text-gradient">
-          {formatNumber(reputationPoints)}
-        </span>
+        {!!reputationPoints && (
+          <span className="small-semibold primary-text-gradient">
+            {formatNumber(reputationPoints)}
+          </span>
+        )}
       </h4>
 
       <div className="mt-5 grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-4">

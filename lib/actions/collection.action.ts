@@ -1,17 +1,15 @@
 "use server";
 
-import mongoose, { PipelineStage } from "mongoose";
+import mongoose, { type PipelineStage } from "mongoose";
 import { revalidatePath } from "next/cache";
-
+import { ROUTES } from "@/constants/routes";
+import { Collection, Question } from "@/database";
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
 import {
   CollectionBaseSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
-
-import { ROUTES } from "@/constants/routes";
-import { Collection, Question } from "@/database";
 
 export async function toggleSaveQuestion(
   params: CollectionBaseParams

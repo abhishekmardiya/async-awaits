@@ -8,17 +8,17 @@ import { QuestionCard } from "@/components/cards/QuestionCard";
 import TagCard from "@/components/cards/TagCard";
 import { DataRenderer } from "@/components/DataRendered";
 import { Pagination } from "@/components/Pagination";
+import { UserAvatar } from "@/components/UserAvatar";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProfileLink } from "@/components/user/ProfileLink";
 import { Stats } from "@/components/user/Stats";
-import { UserAvatar } from "@/components/UserAvatar";
 import { EMPTY_ANSWERS, EMPTY_QUESTION, EMPTY_TAGS } from "@/constants/states";
 import {
   getUser,
   getUserQuestions,
-  getUsersAnswers,
   getUserStats,
+  getUsersAnswers,
   getUserTopTags,
 } from "@/lib/actions/user.action";
 
@@ -107,23 +107,17 @@ const Profile = async ({ params, searchParams }: RouteParams) => {
         error: { message: "Failed to fetch tags" },
       };
 
-  const {
-    // success: userStatsSuccess,
-    data: userStats,
-    // error: userStatsError,
-  } =
+  const { data: userStats } =
     userStatsResult.status === "fulfilled"
       ? userStatsResult.value
       : {
-          // success: false,
           data: null,
-          // error: { message: "Failed to fetch stats" },
         };
 
   const { questions, isNext: hasMoreQuestions } = userQuestions!;
   const { answers, isNext: hasMoreAnswers } = userAnswers!;
   const { tags } = userTopTags!;
-  const { totalQuestions, totalAnswers, badges } = userStats!;
+  const { totalQuestions = 0, totalAnswers = 0, badges } = userStats || {};
 
   return (
     <>

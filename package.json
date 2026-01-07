@@ -18,6 +18,7 @@
     "ts": "tsc --noEmit --watch",
     "lint": "biome check --max-diagnostics=1000000",
     "lint-errors": "biome check --diagnostic-level=error --max-diagnostics=1000000",
+    "format": "biome format --write",
     "start": "next start",
     "debug-build": "next build --debug"
   },

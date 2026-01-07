@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import LeftSidebar from "@/components/navigation/LeftSidebar";
 import Navbar from "@/components/navigation/navbar";

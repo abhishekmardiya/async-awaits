@@ -1,7 +1,7 @@
 "use server";
 
-import { Session } from "next-auth";
-import { ZodError, ZodSchema } from "zod";
+import type { Session } from "next-auth";
+import { ZodError, type ZodType } from "zod";
 
 import { auth } from "@/auth";
 
@@ -10,7 +10,7 @@ import dbConnect from "../mongoose";
 
 type ActionOptions<T> = {
   params?: T;
-  schema?: ZodSchema<T>;
+  schema?: ZodType<T>;
   authorize?: boolean;
 };
 

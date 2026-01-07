@@ -1,4 +1,4 @@
-import { Schema, model, models, Types, Document } from "mongoose";
+import { type Document, model, models, Schema, type Types } from "mongoose";
 
 export interface IAccount {
   // from Types directly and not from Schema.Types

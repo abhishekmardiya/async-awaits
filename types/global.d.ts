@@ -95,3 +95,6 @@ interface Badges {
   SILVER: number;
   BRONZE: number;
 }
+
+type ElementRef<T extends React.ElementType> =
+  React.ComponentPropsWithRef<T>["ref"] extends React.Ref<infer R> ? R : never;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import type React from "react";
 
 import { ROUTES } from "@/constants/routes";
 import { cn, getDevIconClassName, getTechDescription } from "@/lib/utils";
@@ -65,7 +65,11 @@ const TagCard = ({
 
   if (compact) {
     return isButton ? (
-      <button onClick={handleClick} className="flex justify-between gap-2">
+      <button
+        type="button"
+        onClick={handleClick}
+        className="flex justify-between gap-2"
+      >
         {Content}
       </button>
     ) : (

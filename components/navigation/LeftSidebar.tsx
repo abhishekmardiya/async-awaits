@@ -4,9 +4,8 @@ import Link from "next/link";
 
 import { auth, signOut } from "@/auth";
 import { ROUTES } from "@/constants/routes";
-
-import NavLinks from "./navbar/NavLinks";
 import { Button } from "../ui/button";
+import NavLinks from "./navbar/NavLinks";
 
 const LeftSidebar = async () => {
   const session = await auth();

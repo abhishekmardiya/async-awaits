@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { DEFAULT_EMPTY, DEFAULT_ERROR } from "@/constants/states";
 
@@ -45,23 +45,20 @@ const StateSkeleton = ({
   button,
 }: StateSkeletonProps) => (
   <div className="mt-16 flex w-full flex-col items-center justify-center sm:mt-36">
-    <>
-      <Image
-        src={image?.dark}
-        alt={image?.alt}
-        width={270}
-        height={200}
-        className="hidden object-contain dark:block"
-      />
-      <Image
-        src={image?.light}
-        alt={image?.alt}
-        width={270}
-        height={200}
-        className="block object-contain dark:hidden"
-      />
-    </>
-
+    <Image
+      src={image?.dark}
+      alt={image?.alt}
+      width={270}
+      height={200}
+      className="hidden object-contain dark:block"
+    />
+    <Image
+      src={image?.light}
+      alt={image?.alt}
+      width={270}
+      height={200}
+      className="block object-contain dark:hidden"
+    />
     <h2 className="h2-bold text-dark200_light900 mt-8">{title}</h2>
     <p className="body-regular text-dark500_light700 my-3.5 max-w-md text-center">
       {message}

@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MDXEditorMethods } from "@mdxeditor/editor";
+import type { MDXEditorMethods } from "@mdxeditor/editor";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import { useRef, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
+import type { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {

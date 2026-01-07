@@ -1,14 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MDXEditorMethods } from "@mdxeditor/editor";
+import type { MDXEditorMethods } from "@mdxeditor/editor";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useRef, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
+import type { z } from "zod";
 
 import { ROUTES } from "@/constants/routes";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
@@ -230,8 +230,10 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                 <ReloadIcon className="mr-2 size-4 animate-spin" />
                 <span>Submitting...</span>
               </>
+            ) : isEdit ? (
+              "Edit"
             ) : (
-              <>{isEdit ? "Edit" : "Ask A Question"}</>
+              "Ask A Question"
             )}
           </Button>
         </div>
