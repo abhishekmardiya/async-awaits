@@ -4,14 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
-  DefaultValues,
-  FieldValues,
-  Path,
-  SubmitHandler,
+  type DefaultValues,
+  type FieldValues,
+  type Path,
+  type SubmitHandler,
   useForm,
 } from "react-hook-form";
 import { toast } from "sonner";
-import { z, ZodType } from "zod";
+import type { ZodType, z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -44,7 +44,7 @@ const AuthForm = <T extends FieldValues>({
   const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof schema>>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema as any),
     defaultValues: defaultValues as DefaultValues<T>,
   });
 

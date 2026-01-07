@@ -1,6 +1,6 @@
 "use server";
 
-import { FilterQuery, PipelineStage, Types } from "mongoose";
+import { type PipelineStage, type QueryFilter, Types } from "mongoose";
 
 import { Answer, Question, User } from "@/database";
 
@@ -26,7 +26,7 @@ export async function getUsers(
   const skip = (Number(page) - 1) * pageSize;
   const limit = pageSize;
 
-  const filterQuery: FilterQuery<typeof User> = {};
+  const filterQuery: QueryFilter<typeof User> = {};
 
   if (query) {
     filterQuery.$or = [

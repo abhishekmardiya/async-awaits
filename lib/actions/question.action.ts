@@ -1,20 +1,20 @@
 "use server";
 
-import mongoose, { FilterQuery, Types } from "mongoose";
+import mongoose, { type QueryFilter, Types } from "mongoose";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 
 import { auth } from "@/auth";
 import {
-  Tag,
-  Question,
-  TagQuestion,
   Answer,
-  Vote,
   Collection,
   Interaction,
+  Question,
+  Tag,
+  TagQuestion,
+  Vote,
 } from "@/database";
-import { ITagDoc } from "@/database/tag.model";
+import type { ITagDoc } from "@/database/tag.model";
 
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
@@ -277,7 +277,7 @@ export const getQuestions = async (
   const skip = (Number(page) - 1) * pageSize;
   const limit = Number(pageSize);
 
-  const filterQuery: FilterQuery<typeof Question> = {};
+  const filterQuery: QueryFilter<typeof Question> = {};
 
   if (filter === "recommended") {
     // Recommendations
@@ -517,7 +517,7 @@ export async function getRecommendedQuestions({
   // Remove duplicates
   const uniqueTagIds = [...new Set(allTags)];
 
-  const recommendedQuery: FilterQuery<typeof Question> = {
+  const recommendedQuery: QueryFilter<typeof Question> = {
     // exclude interacted questions
     _id: { $nin: interactedQuestionIds },
     // exclude the user's own questions

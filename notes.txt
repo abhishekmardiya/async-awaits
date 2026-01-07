@@ -8,3 +8,4 @@
 - Create a custom toast notification hook
 - Set up an automated daily question workflow using n8n to schedule, generate, and post a question at a specified time each day
 - Fix all biome errors and warnings
+- Add granular Suspense boundaries around each individual API call

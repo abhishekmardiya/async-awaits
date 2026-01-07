@@ -2,18 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    localPatterns: [
+      {
+        pathname: "/**", // allow all path starting with /
+      },
+    ],
     remotePatterns: [
-      // FIXME:remove after testing
-      {
-        protocol: "https",
-        hostname: "static.vecteezy.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        port: "",
-      },
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
@@ -24,12 +18,14 @@ const nextConfig: NextConfig = {
         hostname: "lh3.googleusercontent.com",
         port: "",
       },
-      {
-        protocol: "https",
-        hostname: "*",
-        port: "",
-      },
     ],
+    // qualities --> for nextjs 16
+    qualities: [10, 30, 50, 100],
+    deviceSizes: [370, 768, 1280, 1920],
+    // Next.js cannot safely cache assets in the public folder because they may change.
+    // https://nextjs.org/docs/app/api-reference/file-conventions/public-folder#caching
+    // Set minimumCacheTTL for optimized images. (1 year cache)
+    minimumCacheTTL: 31536000,
   },
   // to avoid errors when using pino with nextjs
   serverExternalPackages: ["pino", "pino-pretty"],
@@ -62,6 +58,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  reactCompiler: true,
 };
 
 export default nextConfig;
