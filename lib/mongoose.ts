@@ -51,7 +51,8 @@ const dbConnect = async (): Promise<Mongoose> => {
 
         logger.info("Connected to MongoDB");
         return result;
-      } catch (error: any) {
+      } catch (error) {
+        // @ts-expect-error
         logger.error("Error connecting to MongoDB", error);
         throw error;
       }
