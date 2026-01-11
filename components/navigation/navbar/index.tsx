@@ -3,8 +3,8 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import { NextLink } from "@/components/NextLink";
 import { UserAvatar } from "@/components/UserAvatar";
+import { SITE_INFO } from "@/constants";
 import { ROUTES } from "@/constants/routes";
-
 import MobileNavigation from "./MobileNavigation";
 import Theme from "./Theme";
 
@@ -17,7 +17,7 @@ const Navbar = async () => {
       <NextLink href={ROUTES?.HOME} className="flex items-center gap-1">
         <Image
           src="/images/site-logo.svg"
-          alt="Async Awaits Logo"
+          alt={`${SITE_INFO.title} Logo`}
           width={23}
           height={23}
         />

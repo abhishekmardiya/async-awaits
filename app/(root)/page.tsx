@@ -42,12 +42,14 @@ const Home = async ({ searchParams }: SearchParams) => {
           className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900"
           asChild
         >
-          <NextLink href={ROUTES?.ASK_QUESTION}>Ask a Question</NextLink>
+          <NextLink href={ROUTES?.ASK_QUESTION} className="max-sm:w-full">
+            Ask a Question
+          </NextLink>
         </Button>
       </section>
       <section className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearch
-          route="/"
+          route={ROUTES.HOME}
           imgSrc="/icons/search.svg"
           placeholder="Search questions..."
           otherClasses="flex-1"

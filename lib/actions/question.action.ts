@@ -3,7 +3,7 @@
 import mongoose, { type QueryFilter, Types } from "mongoose";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
-
+import { cache } from "react";
 import { auth } from "@/auth";
 import {
   Answer,
@@ -15,7 +15,6 @@ import {
   Vote,
 } from "@/database";
 import type { ITagDoc } from "@/database/tag.model";
-
 import { action } from "../handlers/action";
 import handleError from "../handlers/error";
 import dbConnect from "../mongoose";
@@ -232,9 +231,9 @@ export async function editQuestion(
   }
 }
 
-export const getQuestion = async (
+export const getQuestion = cache(async function getQuestion(
   params: GetQuestionParams
-): Promise<ActionResponse<Question>> => {
+): Promise<ActionResponse<Question>> {
   const validationResult = await action({
     params,
     schema: GetQuestionSchema,
@@ -259,7 +258,7 @@ export const getQuestion = async (
   } catch (error) {
     return handleError(error) as ErrorResponse;
   }
-};
+});
 
 export const getQuestions = async (
   params: PaginatedSearchParams

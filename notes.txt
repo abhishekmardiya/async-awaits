@@ -2,10 +2,9 @@
 - Develop a `useToaster` custom hook
 - Implement a `<NextImage />` component
 - Set up Husky for pre-commit linting with Biome and TypeScript
-- Upgrade Next.js to version 16 and use cache components
+- Migrate to Next.js 16 cache components
 - Fix the dark theme issue in the markdown editor for the answer section
 - Enable edit functionality for questions and answers on the question page
-- Create a custom toast notification hook
 - Set up an automated daily question workflow using n8n to schedule, generate, and post a question at a specified time each day
-- Fix all biome errors and warnings
-- Add granular Suspense boundaries around each individual API call
+- Add metadata for all pages
+- Add open graph image, sitemap, robots.txt, etc.

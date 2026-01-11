@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
 import type { ReactNode } from "react";
@@ -10,6 +10,7 @@ import { auth } from "@/auth";
 import ThemeProvider from "@/context/Theme";
 
 import "./globals.css";
+import { SITE_INFO } from "@/constants";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -23,12 +24,53 @@ const spaceGrotesk = localFont({
   weight: "300 400 500 700",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#18181b",
+};
+
 export const metadata: Metadata = {
-  title: "Async Awaits",
-  description:
-    "A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.",
-  icons: {
-    icon: "/images/site-logo.svg",
+  title: SITE_INFO.title,
+  description: SITE_INFO.description,
+  // generator -->  Used in some browser UIs and when the site is saved to a home screen. It helps define what your app is called in places like Progressive Web Apps (PWAs) and mobile browsers.
+  generator: "Next.js",
+  applicationName: SITE_INFO.title,
+  referrer: "origin-when-cross-origin",
+  // formatDetection --> This prevents browsers (especially on mobile) from automatically linking email addresses, phone numbers, or addresses in your content.
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: SITE_INFO.title,
+    description: SITE_INFO.description,
+    url: SITE_INFO.url,
+    siteName: SITE_INFO.title,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_INFO.title} OG Banner`,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_INFO.title,
+    description: SITE_INFO.description,
+    images: ["/opengraph-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true, // bots should follow the links on this page and crawl them too
+    nocache: true, // tels bots not to store a cached version of the page
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
