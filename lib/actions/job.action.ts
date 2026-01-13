@@ -1,3 +1,5 @@
+import "server-only";
+
 export const fetchLocation = async (): Promise<ActionResponse<string>> => {
   try {
     const response = await fetch("http://ip-api.com/json/?fields=country");
