@@ -5,7 +5,7 @@ import { type PipelineStage, type QueryFilter, Types } from "mongoose";
 import { Answer, Question, User } from "@/database";
 
 import { action } from "../handlers/action";
-import handleError from "../handlers/error";
+import { handleError } from "../handlers/error";
 import { assignBadges } from "../utils";
 import { GetUserSchema, PaginatedSearchParamsSchema } from "../validations";
 

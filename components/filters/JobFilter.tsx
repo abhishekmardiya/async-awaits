@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/counties";
 import { formUrlQuery } from "@/lib/url";
-import LocalSearch from "../search/LocalSearch";
+import { LocalSearch } from "../search/LocalSearch";
 
 export const JobsFilter = () => {
   const router = useRouter();

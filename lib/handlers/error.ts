@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 import { RequestError, ValidationError } from "../http-errors";
-import logger from "../logger";
+import { logger } from "../logger";
 
 export type ResponseType = "api" | "server";
 
@@ -25,7 +25,10 @@ const formatResponse = (
     : { status, ...responseContent };
 };
 
-const handleError = (error: unknown, responseType: ResponseType = "server") => {
+export const handleError = (
+  error: unknown,
+  responseType: ResponseType = "server"
+) => {
   if (error instanceof RequestError) {
     logger.error(
       { err: error },
@@ -69,5 +72,3 @@ const handleError = (error: unknown, responseType: ResponseType = "server") => {
 
   return formatResponse(responseType, 500, "An unexpected error occurred");
 };
-
-export default handleError;

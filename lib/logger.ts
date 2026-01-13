@@ -4,7 +4,7 @@ import pino from "pino";
 const isEdge = process.env.NEXT_RUNTIME === "edge";
 const isProduction = process.env.NODE_ENV === "production";
 
-const logger = pino({
+export const logger = pino({
   level: process.env.LOG_LEVEL || "info",
   transport:
     !isEdge && !isProduction
@@ -23,5 +23,3 @@ const logger = pino({
   },
   timestamp: pino.stdTimeFunctions.isoTime,
 });
-
-export default logger;

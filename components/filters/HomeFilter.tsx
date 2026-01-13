@@ -15,7 +15,7 @@ const filters = [
   { name: "Recommended", value: "recommended" },
 ];
 
-const HomeFilter = () => {
+export const HomeFilter = () => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const filterParams = searchParams?.get("filter");
@@ -64,5 +64,3 @@ const HomeFilter = () => {
     </div>
   );
 };
-
-export default HomeFilter;

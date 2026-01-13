@@ -7,7 +7,7 @@ import { signIn } from "@/auth";
 import { Account, User } from "@/database";
 
 import { action } from "../handlers/action";
-import handleError from "../handlers/error";
+import { handleError } from "../handlers/error";
 import { NotFoundError } from "../http-errors";
 import { SignInSchema, SignUpSchema } from "../validations";
 

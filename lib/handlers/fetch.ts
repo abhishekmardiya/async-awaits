@@ -1,6 +1,6 @@
 import { RequestError } from "../http-errors";
-import logger from "../logger";
-import handleError from "./error";
+import { logger } from "../logger";
+import { handleError } from "./error";
 
 // https://developer.mozilla.org/en-US/docs/Web/API/RequestInit
 interface FetchOptions extends RequestInit {

@@ -19,7 +19,7 @@ interface Props {
   handleRemove?: () => void;
 }
 
-const TagCard = ({
+export const TagCard = ({
   _id,
   name,
   questions,
@@ -104,5 +104,3 @@ const TagCard = ({
     );
   }
 };
-
-export default TagCard;

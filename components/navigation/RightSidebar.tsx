@@ -5,10 +5,10 @@ import { ROUTES } from "@/constants/routes";
 import { getHotQuestions } from "@/lib/actions/question.action";
 import { getTopTags } from "@/lib/actions/tag.action";
 
-import TagCard from "../cards/TagCard";
+import { TagCard } from "../cards/TagCard";
 import { DataRenderer } from "../DataRendered";
 
-const RightSidebar = async () => {
+export const RightSidebar = async () => {
   const [hotQuestionsResult, tagsResult] = await Promise.allSettled([
     getHotQuestions(),
     getTopTags(),
@@ -107,5 +107,3 @@ const RightSidebar = async () => {
     </section>
   );
 };
-
-export default RightSidebar;

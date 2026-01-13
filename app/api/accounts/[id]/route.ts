@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
 import { Account } from "@/database";
-import handleError from "@/lib/handlers/error";
+import { handleError } from "@/lib/handlers/error";
 import { NotFoundError, ValidationError } from "@/lib/http-errors";
-import dbConnect from "@/lib/mongoose";
+import { dbConnect } from "@/lib/mongoose";
 import { AccountSchema } from "@/lib/validations";
 
 // Get account by id

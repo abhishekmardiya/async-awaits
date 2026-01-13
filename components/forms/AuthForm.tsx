@@ -34,7 +34,7 @@ interface AuthFormProps<T extends FieldValues> {
   onSubmit: (data: T) => Promise<ActionResponse>;
 }
 
-const AuthForm = <T extends FieldValues>({
+export const AuthForm = <T extends FieldValues>({
   formType,
   schema,
   defaultValues,
@@ -146,5 +146,3 @@ const AuthForm = <T extends FieldValues>({
     </Form>
   );
 };
-
-export default AuthForm;

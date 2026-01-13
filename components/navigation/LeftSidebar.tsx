@@ -5,9 +5,9 @@ import Link from "next/link";
 import { auth, signOut } from "@/auth";
 import { ROUTES } from "@/constants/routes";
 import { Button } from "../ui/button";
-import NavLinks from "./navbar/NavLinks";
+import { NavLinks } from "./navbar/NavLinks";
 
-const LeftSidebar = async () => {
+export const LeftSidebar = async () => {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -77,5 +77,3 @@ const LeftSidebar = async () => {
     </section>
   );
 };
-
-export default LeftSidebar;

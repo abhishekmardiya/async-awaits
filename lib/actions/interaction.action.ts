@@ -4,7 +4,7 @@ import { Interaction, User } from "@/database";
 import type { IInteractionDoc } from "@/database/interaction.model";
 
 import { action } from "../handlers/action";
-import handleError from "../handlers/error";
+import { handleError } from "../handlers/error";
 import { CreateInteractionSchema } from "../validations";
 
 // Why use next/after?

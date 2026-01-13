@@ -5,10 +5,10 @@ import { NextLink } from "@/components/NextLink";
 import { UserAvatar } from "@/components/UserAvatar";
 import { SITE_INFO } from "@/constants";
 import { ROUTES } from "@/constants/routes";
-import MobileNavigation from "./MobileNavigation";
-import Theme from "./Theme";
+import { MobileNavigation } from "./MobileNavigation";
+import { Theme } from "./Theme";
 
-const Navbar = async () => {
+export const Navbar = async () => {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -42,5 +42,3 @@ const Navbar = async () => {
     </div>
   );
 };
-
-export default Navbar;

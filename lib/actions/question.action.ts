@@ -16,8 +16,8 @@ import {
 } from "@/database";
 import type { ITagDoc } from "@/database/tag.model";
 import { action } from "../handlers/action";
-import handleError from "../handlers/error";
-import dbConnect from "../mongoose";
+import { handleError } from "../handlers/error";
+import { dbConnect } from "../mongoose";
 import {
   AskQuestionSchema,
   DeleteQuestionSchema,

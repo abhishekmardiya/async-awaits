@@ -16,7 +16,5 @@ const CollectionSchema = new Schema<ICollection>(
   { timestamps: true }
 );
 
-const Collection =
+export const Collection =
   models?.Collection || model<ICollection>("Collection", CollectionSchema);
-
-export default Collection;

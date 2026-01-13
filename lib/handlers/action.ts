@@ -6,7 +6,7 @@ import { ZodError, type ZodType } from "zod";
 import { auth } from "@/auth";
 
 import { UnauthorizedError, ValidationError } from "../http-errors";
-import dbConnect from "../mongoose";
+import { dbConnect } from "../mongoose";
 
 type ActionOptions<T> = {
   params?: T;

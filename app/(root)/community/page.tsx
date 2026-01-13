@@ -1,8 +1,8 @@
-import UserCard from "@/components/cards/UserCard";
+import { UserCard } from "@/components/cards/UserCard";
 import { DataRenderer } from "@/components/DataRendered";
 import { CommonFilter } from "@/components/filters/CommonFilter";
 import { Pagination } from "@/components/Pagination";
-import LocalSearch from "@/components/search/LocalSearch";
+import { LocalSearch } from "@/components/search/LocalSearch";
 import { UserFilters } from "@/constants/filters";
 import { ROUTES } from "@/constants/routes";
 import { EMPTY_USERS } from "@/constants/states";

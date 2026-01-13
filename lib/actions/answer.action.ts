@@ -9,7 +9,7 @@ import { Answer, Question, Vote } from "@/database";
 import type { IAnswerDoc } from "@/database/answer.model";
 
 import { action } from "../handlers/action";
-import handleError from "../handlers/error";
+import { handleError } from "../handlers/error";
 import {
   AnswerServerSchema,
   DeleteAnswerSchema,

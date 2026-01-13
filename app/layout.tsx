@@ -7,11 +7,11 @@ import type { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 import { auth } from "@/auth";
-import ThemeProvider from "@/context/Theme";
+import { ThemeProvider } from "@/context/Theme";
 
 import "./globals.css";
-import { SITE_INFO } from "@/constants";
 import { PageTransitionProgressBar } from "@/components/PageTransitionProgressBar";
+import { SITE_INFO } from "@/constants";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",

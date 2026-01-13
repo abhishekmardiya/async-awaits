@@ -1,10 +1,10 @@
 import { QuestionCard } from "@/components/cards/QuestionCard";
 import { DataRenderer } from "@/components/DataRendered";
 import { CommonFilter } from "@/components/filters/CommonFilter";
-import HomeFilter from "@/components/filters/HomeFilter";
+import { HomeFilter } from "@/components/filters/HomeFilter";
 import { NextLink } from "@/components/NextLink";
 import { Pagination } from "@/components/Pagination";
-import LocalSearch from "@/components/search/LocalSearch";
+import { LocalSearch } from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import { ROUTES } from "@/constants/routes";

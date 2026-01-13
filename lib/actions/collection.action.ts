@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { ROUTES } from "@/constants/routes";
 import { Collection, Question } from "@/database";
 import { action } from "../handlers/action";
-import handleError from "../handlers/error";
+import { handleError } from "../handlers/error";
 import {
   CollectionBaseSchema,
   PaginatedSearchParamsSchema,
@@ -189,7 +189,7 @@ export async function getSavedQuestions(
 
     const questions = await Collection.aggregate(pipeline);
 
-    const isNext = totalCount.count > skip + questions.length;
+    const isNext = totalCount?.count > skip + questions.length;
 
     return {
       success: true,

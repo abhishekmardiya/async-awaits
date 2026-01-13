@@ -7,7 +7,7 @@ import { cn, getTimeStamp } from "@/lib/utils";
 
 import { Preview } from "../editor/Preview";
 import { UserAvatar } from "../UserAvatar";
-import EditDeleteAction from "../user/EditDeleteAction";
+import { EditDeleteAction } from "../user/EditDeleteAction";
 import { VoteShimmer } from "../VoteShimmer";
 import { Votes } from "../votes/Votes";
 

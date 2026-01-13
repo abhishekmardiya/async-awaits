@@ -9,7 +9,7 @@ import { ROUTES } from "@/constants/routes";
 
 import { Button } from "../ui/button";
 
-const SocialAuthForm = () => {
+export const SocialAuthForm = () => {
   const pathName = usePathname();
 
   const btnTitlePrefix = pathName === ROUTES.SIGN_IN ? "Sign in" : "Sign up";
@@ -58,5 +58,3 @@ const SocialAuthForm = () => {
     </div>
   );
 };
-
-export default SocialAuthForm;

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { themePreferenceList } from "@/constants";
 
-const Theme = () => {
+export const Theme = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -38,5 +38,3 @@ const Theme = () => {
     </DropdownMenu>
   );
 };
-
-export default Theme;

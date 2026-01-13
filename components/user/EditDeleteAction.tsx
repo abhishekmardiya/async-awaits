@@ -23,7 +23,7 @@ interface Props {
   itemId: string;
 }
 
-const EditDeleteAction = ({ type, itemId }: Props) => {
+export const EditDeleteAction = ({ type, itemId }: Props) => {
   const { push } = useRouter();
 
   const handleEdit = async () => {
@@ -84,5 +84,3 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
     </div>
   );
 };
-
-export default EditDeleteAction;

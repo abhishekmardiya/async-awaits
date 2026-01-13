@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { UserAvatar } from "../UserAvatar";
 
-const UserCard = ({ _id, name, image, username }: User) => (
+export const UserCard = ({ _id, name, image, username }: User) => (
   <div className="shadow-light100_darknone w-full xs:w-[230px]">
     <article className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border p-8">
       <UserAvatar
@@ -22,5 +22,3 @@ const UserCard = ({ _id, name, image, username }: User) => (
     </article>
   </div>
 );
-
-export default UserCard;

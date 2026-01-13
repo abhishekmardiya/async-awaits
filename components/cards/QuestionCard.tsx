@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { getTimeStamp } from "@/lib/utils";
 import { Metric } from "../Metric";
-import EditDeleteAction from "../user/EditDeleteAction";
-import TagCard from "./TagCard";
+import { EditDeleteAction } from "../user/EditDeleteAction";
+import { TagCard } from "./TagCard";
 
 interface Props {
   question: Question;

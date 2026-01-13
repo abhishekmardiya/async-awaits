@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-import SocialAuthForm from "@/components/forms/SocialAuthForm";
+import { SocialAuthForm } from "@/components/forms/SocialAuthForm";
 import { SITE_INFO } from "@/constants";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {

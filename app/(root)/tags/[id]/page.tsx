@@ -1,7 +1,7 @@
 import { QuestionCard } from "@/components/cards/QuestionCard";
 import { DataRenderer } from "@/components/DataRendered";
 import { CommonFilter } from "@/components/filters/CommonFilter";
-import LocalSearch from "@/components/search/LocalSearch";
+import { LocalSearch } from "@/components/search/LocalSearch";
 import { TagFilters } from "@/constants/filters";
 import { ROUTES } from "@/constants/routes";
 import { EMPTY_QUESTION } from "@/constants/states";

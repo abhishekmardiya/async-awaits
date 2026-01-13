@@ -3,9 +3,9 @@ import { type NextRequest, NextResponse } from "next/server";
 import slugify from "slugify";
 
 import { Account, User } from "@/database";
-import handleError from "@/lib/handlers/error";
+import { handleError } from "@/lib/handlers/error";
 import { ValidationError } from "@/lib/http-errors";
-import dbConnect from "@/lib/mongoose";
+import { dbConnect } from "@/lib/mongoose";
 import { SignInWithOAuthSchema } from "@/lib/validations";
 
 export async function POST(req: NextRequest) {

@@ -5,7 +5,7 @@ import type { Mongoose } from "mongoose";
 // FIXME: this "mongoose" is unused import or not ?
 // biome-ignore lint/correctness/noUnusedImports: -
 import mongoose from "mongoose";
-import logger from "./logger";
+import { logger } from "./logger";
 
 // We need to ensure that all models are already loaded before we run any logic.
 // Importing the database models ensures they are registered with Mongoose, allowing us to access and query their data throughout the application. This guarantees that all model-dependent features, such as fetching questions, work reliably in every scenario.
@@ -36,7 +36,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-const dbConnect = async (): Promise<Mongoose> => {
+export const dbConnect = async (): Promise<Mongoose> => {
   if (cached?.conn) {
     logger.info("Using mongoose cached connection");
     return cached.conn;
@@ -62,5 +62,3 @@ const dbConnect = async (): Promise<Mongoose> => {
   cached.conn = await cached.promise;
   return cached.conn;
 };
-
-export default dbConnect;

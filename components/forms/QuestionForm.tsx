@@ -14,7 +14,7 @@ import { ROUTES } from "@/constants/routes";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { AskQuestionSchema } from "@/lib/validations";
 
-import TagCard from "../cards/TagCard";
+import { TagCard } from "../cards/TagCard";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -36,7 +36,7 @@ interface Params {
   isEdit?: boolean;
 }
 
-const QuestionForm = ({ question, isEdit = false }: Params) => {
+export const QuestionForm = ({ question, isEdit = false }: Params) => {
   const { push } = useRouter();
 
   const [isPending, startTransition] = useTransition();
@@ -241,5 +241,3 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
     </Form>
   );
 };
-
-export default QuestionForm;

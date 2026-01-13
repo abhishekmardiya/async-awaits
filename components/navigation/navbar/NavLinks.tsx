@@ -9,7 +9,7 @@ import { SheetClose } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
 
-const NavLinks = ({
+export const NavLinks = ({
   isMobileNav = false,
   userId,
 }: {
@@ -73,5 +73,3 @@ const NavLinks = ({
     </>
   );
 };
-
-export default NavLinks;

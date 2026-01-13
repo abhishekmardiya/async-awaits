@@ -16,7 +16,7 @@ interface Props {
   iconPosition?: "left" | "right";
 }
 
-const LocalSearch = ({
+export const LocalSearch = ({
   imgSrc,
   placeholder,
   route,
@@ -94,5 +94,3 @@ const LocalSearch = ({
     </div>
   );
 };
-
-export default LocalSearch;

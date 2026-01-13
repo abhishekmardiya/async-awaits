@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { AnswerCard } from "@/components/answers/AnswerCard";
 import { QuestionCard } from "@/components/cards/QuestionCard";
-import TagCard from "@/components/cards/TagCard";
+import { TagCard } from "@/components/cards/TagCard";
 import { DataRenderer } from "@/components/DataRendered";
 import { Pagination } from "@/components/Pagination";
 import { UserAvatar } from "@/components/UserAvatar";

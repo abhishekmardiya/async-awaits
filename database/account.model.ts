@@ -30,6 +30,5 @@ const AccountSchema = new Schema<IAccount>(
 
 // models gives all the models in the database
 // If the model is already registered, use that, otherwise create a new model
-const Account = models?.Account || model<IAccount>("Account", AccountSchema);
-
-export default Account;
+export const Account =
+  models?.Account || model<IAccount>("Account", AccountSchema);
