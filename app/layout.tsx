@@ -11,6 +11,7 @@ import ThemeProvider from "@/context/Theme";
 
 import "./globals.css";
 import { SITE_INFO } from "@/constants";
+import { PageTransitionProgressBar } from "@/components/PageTransitionProgressBar";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -107,7 +108,7 @@ const MainLayout = async ({ children }: { children: ReactNode }) => {
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <PageTransitionProgressBar>{children}</PageTransitionProgressBar>{" "}
             <Analytics />
             <SpeedInsights />
           </ThemeProvider>
