@@ -8,14 +8,10 @@ const nextConfig: NextConfig = {
       },
     ],
     remotePatterns: [
+      // We cannot whitelist specific domains since we do not know in advance which image sources will appear on the job post page.
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
+        hostname: "*",
         port: "",
       },
     ],

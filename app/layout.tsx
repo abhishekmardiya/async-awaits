@@ -44,11 +44,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: SITE_INFO.title,
     description: SITE_INFO.description,
-    url: SITE_INFO.url,
     siteName: SITE_INFO.title,
     images: [
       {
-        url: "/opengraph-image.png",
+        url: `${SITE_INFO.url}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: `${SITE_INFO.title} OG Banner`,
@@ -61,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_INFO.title,
     description: SITE_INFO.description,
-    images: ["/opengraph-image.png"],
+    images: [`${SITE_INFO.url}/opengraph-image.png`],
   },
   robots: {
     index: true,
