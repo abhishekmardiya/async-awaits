@@ -6,9 +6,9 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { globalSearch } from "@/lib/actions/global-search.action";
-import GlobalFilter from "./filters/GlobalFilter";
+import { GlobalFilter } from "./filters/GlobalFilter";
 
-const GlobalResult = () => {
+export const GlobalResult = () => {
   const searchParams = useSearchParams();
 
   const [result, setResult] = useState([]);
@@ -117,5 +117,3 @@ const GlobalResult = () => {
     </div>
   );
 };
-
-export default GlobalResult;

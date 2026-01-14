@@ -7,3 +7,4 @@
 - Set up an automated daily question workflow using n8n to schedule, generate, and post a question at a specified time each day
 - Add metadata for all pages
 - Add open graph image, sitemap, robots.txt, etc.
+- Form validations are not working as expected

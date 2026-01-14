@@ -6,7 +6,7 @@ import { useState } from "react";
 import { GlobalSearchFilters } from "@/constants/filters";
 import { formUrlQuery } from "@/lib/url";
 
-const GlobalFilter = () => {
+export const GlobalFilter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -63,5 +63,3 @@ const GlobalFilter = () => {
     </div>
   );
 };
-
-export default GlobalFilter;

@@ -2,12 +2,12 @@ import Image from "next/image";
 
 import { auth } from "@/auth";
 import { NextLink } from "@/components/NextLink";
+import { GlobalSearch } from "@/components/search/GlobalSearch";
 import { UserAvatar } from "@/components/UserAvatar";
 import { SITE_INFO } from "@/constants";
 import { ROUTES } from "@/constants/routes";
 import { MobileNavigation } from "./MobileNavigation";
 import { Theme } from "./Theme";
-import GlobalSearch from "@/components/search/GlobalSearch";
 
 export const Navbar = async () => {
   const session = await auth();
