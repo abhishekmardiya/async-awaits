@@ -7,6 +7,7 @@ import { SITE_INFO } from "@/constants";
 import { ROUTES } from "@/constants/routes";
 import { MobileNavigation } from "./MobileNavigation";
 import { Theme } from "./Theme";
+import GlobalSearch from "@/components/search/GlobalSearch";
 
 export const Navbar = async () => {
   const session = await auth();
@@ -25,7 +26,9 @@ export const Navbar = async () => {
           Async<span className="text-primary-500">Awaits</span>{" "}
         </p>
       </NextLink>
-      {/* TODO: Global Search */}
+
+      <GlobalSearch />
+
       <div className="flex-between gap-5">
         <Theme />
 
