@@ -28,6 +28,9 @@ import {
 } from "../validations";
 import { createInteraction } from "./interaction.action";
 
+const escapeRegExp = (value: string): string =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 export const createQuestion = async (
   params: CreateQuestionParams
 ): Promise<ActionResponse<Question>> => {
@@ -300,9 +303,10 @@ export const getQuestions = async (
   }
 
   if (query) {
+    const safeQuery = escapeRegExp(query);
     filterQuery.$or = [
-      { title: { $regex: new RegExp(query, "i") } },
-      { content: { $regex: new RegExp(query, "i") } },
+      { title: { $regex: new RegExp(safeQuery, "i") } },
+      { content: { $regex: new RegExp(safeQuery, "i") } },
     ];
   }
 
