@@ -75,7 +75,7 @@ export const createQuestion = async (
       const existingTag = await Tag.findOneAndUpdate(
         {
           name: {
-            $regex: new RegExp(`^${tag}$`, "i"),
+            $regex: new RegExp(`^${escapeRegExp(tag)}$`, "i"),
           },
         },
         {
