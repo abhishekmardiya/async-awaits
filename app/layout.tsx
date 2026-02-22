@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
@@ -108,9 +106,7 @@ const MainLayout = async ({ children }: { children: ReactNode }) => {
             enableSystem
             disableTransitionOnChange
           >
-            <PageTransitionProgressBar>{children}</PageTransitionProgressBar>{" "}
-            <Analytics />
-            <SpeedInsights />
+            <PageTransitionProgressBar>{children}</PageTransitionProgressBar>
           </ThemeProvider>
           <Toaster position="top-center" />
         </body>
