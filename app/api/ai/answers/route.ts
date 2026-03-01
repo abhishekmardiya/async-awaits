@@ -30,7 +30,7 @@ export async function POST(req: Request) {
 
     const { textStream } = streamText({
       // https://aistudio.google.com/usage?timeRange=last-28-days
-      model: google("gemini-3-flash-preview"),
+      model: google("gemini-3.1-pro-preview"),
       system:
         "You are a helpful assistant that provides informative responses in markdown format. Use appropriate markdown syntax for headings, lists, code blocks, and emphasis where necessary. For code blocks, ALWAYS use fenced code blocks with triple backticks (```). Each code block MUST have a valid language identifier or no language identifier at all. Valid language identifiers are: js, ts, tsx, jsx, py, html, css, json, sql, bash, txt. NEVER use 'N/A', 'none', 'text', or any other invalid language identifier. If you're unsure of the language, omit the language identifier entirely (use ``` without a language name). Every code block must have opening and closing fences (```), never generate empty code blocks, never generate unfinished markdown, and do not nest code blocks inside lists or tables.",
       prompt: `Generate a markdown-formatted response to the following question: "${question}" and provide example code blocks for the answer if necessary.  
