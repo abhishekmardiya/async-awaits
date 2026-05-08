@@ -44,7 +44,7 @@
     "cm6-theme-basic-dark": "^0.2.0",
     "dayjs": "^1.11.19",
     "lucide-react": "^0.562.0",
-    "mongoose": "^9.1.2",
+    "mongoose": "^9.1.6",
     "next": "^16.2.3",
     "next-auth": "^5.0.0-beta.25",
     "next-mdx-remote": "^6.0.0",
