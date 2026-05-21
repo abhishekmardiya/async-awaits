@@ -19,8 +19,8 @@ export {
   Collection,
   Interaction,
   Question,
-  TagQuestion,
   Tag,
+  TagQuestion,
   User,
   Vote,
 };
