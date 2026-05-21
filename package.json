@@ -64,7 +64,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
-    "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/bcryptjs": "^3.0.0",
     "@types/node": "^25",
@@ -73,7 +72,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "postcss": "^8",
     "prettier": "^3.8.3",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^3.4.17",
     "typescript": "^6.0.3"
   }
 }
